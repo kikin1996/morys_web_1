@@ -2,35 +2,40 @@ export function ContactSection() {
   return (
     <section className="border-t border-neutral-100 bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8 lg:py-16">
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold tracking-tight text-neutral-900 sm:text-2xl">
-            Váš nový domov začíná otázkou
+        <div className="space-y-6">
+          <h2 className="text-4xl font-semibold leading-tight tracking-tight text-[#12351c] sm:text-5xl lg:text-6xl">
+            <span className="block">Váš nový</span>
+            <span className="block">domov začíná</span>
+            <span className="block">otázkou</span>
           </h2>
           <p className="text-sm leading-relaxed text-neutral-600 sm:text-base">
-            Originální web využívá několik kontaktních formulářů s integrační
-            logikou ve Webflow. Zde stavíme jednoduchý, plně kontrolovaný
-            formulář připravený pro napojení na API.
+            Jsme tu pro vás. Obraťte se na nás s jakýmikoli dotazy – rádi vám
+            poskytneme veškeré informace a osobně vás provedeme výběrem bytu,
+            který naplní vaše očekávání.
           </p>
-          <div className="space-y-1 text-sm text-neutral-700">
-            <p className="font-semibold">Ukázkový prodejce</p>
-            <p>
-              E-mail:{" "}
+          <div className="space-y-4 pt-2">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-600">
+                <span className="text-lg">✉</span>
+              </div>
               <a
-                href="mailto:info@example.com"
-                className="text-primary hover:underline"
+                href="mailto:josef.lebeda@resimo.cz"
+                className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
               >
-                info@example.com
+                josef.lebeda@resimo.cz
               </a>
-            </p>
-            <p>
-              Telefon:{" "}
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-600">
+                <span className="text-lg">📞</span>
+              </div>
               <a
-                href="tel:+420123456789"
-                className="text-primary hover:underline"
+                href="tel:+420737347067"
+                className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
               >
-                +420 123 456 789
+                +420 737 347 067
               </a>
-            </p>
+            </div>
           </div>
         </div>
         <form className="space-y-4 rounded-[32px] border border-[#ece1cf] bg-[#f8f3e7] p-6 shadow-sm">

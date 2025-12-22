@@ -5,10 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { href: "/o-projektu", label: "O projektu" },
-  { href: "/cenik", label: "Ceník" },
+  { href: "/vyber-bytu", label: "Výběr bytu" },
   { href: "/standardy", label: "Standardy" },
-  { href: "/lokalita", label: "Lokalita" },
   { href: "/galerie", label: "Galerie" },
   { href: "/aktuality", label: "Aktuality" },
   { href: "/kontakt", label: "Kontakt" }
@@ -65,7 +63,7 @@ export function Header() {
             English
           </span>
           <Link
-            href="/cenik"
+            href="/vyber-bytu"
             className="ml-4 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-semibold text-neutral-900 shadow-md hover:bg-neutral-100"
           >
             <span>Volné byty</span>
@@ -108,7 +106,7 @@ export function Header() {
               );
             })}
             <Link
-              href="/cenik"
+              href="/vyber-bytu"
               className="mt-2 rounded-full bg-white px-4 py-2 text-center text-sm font-semibold text-neutral-900"
               onClick={() => setOpen(false)}
             >

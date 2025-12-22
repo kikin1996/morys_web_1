@@ -19,9 +19,9 @@ export function HomeStats() {
   ];
 
   return (
-    <section className="border-b border-neutral-100 bg-white">
-      <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-6 lg:px-8">
-        <div className="grid gap-6 border-t border-neutral-200 pt-8 text-sm text-neutral-900 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="border-b border-neutral-100 bg-neutral-50 py-10 sm:py-12">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-white px-4 pb-10 pt-8 sm:px-6 lg:px-8">
+        <div className="grid gap-6 text-sm text-neutral-900 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
             <div key={item.label}>
               <p className="text-xs uppercase tracking-[0.18em] text-neutral-600">

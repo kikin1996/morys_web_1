@@ -12,4 +12,60 @@ body {
     "Segoe UI", sans-serif;
 }
 
+/* Interaktivní mapa Luční háj */
+.luchnihaj-map-box {
+  padding: 40px;
+  border: 2px solid #eee;
+  background: #fafafa;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 2260px;
+}
+
+@media (min-width: 1024px) {
+  .luchnihaj-map-box {
+    width: 100%;
+  }
+}
+
+.luchnihaj-map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1920 / 1072;
+}
+
+.luchnihaj-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lh-zone {
+  fill: rgba(0, 217, 181, 0.1);
+  stroke: #00d9b5;
+  stroke-width: 3;
+  cursor: pointer;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.lh-zone:hover {
+  fill: rgba(0, 217, 181, 0.35);
+  stroke: #00b192;
+}
+
+.lh-zone-label {
+  fill: #ffffff;
+  font-size: 80px;
+  font-weight: 600;
+  pointer-events: none;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.lh-zone-group:hover .lh-zone-label {
+  fill: #f5f5f5;
+}
 
