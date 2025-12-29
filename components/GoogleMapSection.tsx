@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
-    google: typeof google;
+    google: any;
   }
 }
 
@@ -15,7 +15,7 @@ export function GoogleMapSection() {
     if (!mapRef.current) return;
 
     // Custom map style - dark green background, beige roads, white icons
-    const mapStyle: google.maps.MapTypeStyle[] = [
+    const mapStyle: any[] = [
       {
         featureType: "all",
         elementType: "labels.text.fill",
