@@ -7,8 +7,8 @@ type CtaStripProps = {
 
 export function CtaStrip({ primary, secondary }: CtaStripProps) {
   return (
-    <section className="bg-primary text-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <section className="bg-[#12351c] text-white">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-white/60">
             Další krok

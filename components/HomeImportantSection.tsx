@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function HomeImportantSection() {
   return (
-    <section className="border-b border-neutral-100 bg-neutral-50">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <section className="border-b border-neutral-100 bg-white">
+      <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#f4f0e6] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#12351c]">

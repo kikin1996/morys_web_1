@@ -30,7 +30,7 @@ export function Header() {
       >
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-semibold tracking-[0.18em] uppercase">
-            ECOVILLA
+            NA BLATNICI
           </span>
         </Link>
 

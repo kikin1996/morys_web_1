@@ -1,7 +1,7 @@
 export function ContactSection() {
   return (
     <section className="border-t border-neutral-100 bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8 lg:py-16">
+      <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-12 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8 lg:py-16">
         <div className="space-y-6">
           <h2 className="text-4xl font-semibold leading-tight tracking-tight text-[#12351c] sm:text-5xl lg:text-6xl">
             <span className="block">Váš nový</span>

@@ -22,18 +22,18 @@ export function Hero({
   return (
     <section className="bg-neutral-50 pb-6 pt-24 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">
       <div
-        className="flex min-h-[120vh] w-full flex-col overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
+        className="mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
         style={{
           backgroundImage:
-            "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1920&q=80')",
+            "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1)), url('/fotky/fotografie-exterier/ex%20(3).jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center"
+          backgroundPosition: "left center"
         }}
       >
-        <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-20 sm:px-10 sm:pt-24 lg:px-14 lg:pt-28">
+        <div className="flex min-h-[70vh] flex-col px-6 pb-16 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
           <div
             className={`max-w-xl space-y-6 ${
-              alignRight ? "ml-auto text-right" : ""
+              alignRight ? "ml-auto text-right lg:mr-24" : ""
             }`}
           >
             {eyebrow && !alignRight && (

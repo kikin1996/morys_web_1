@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "ECOVILLA Clone",
-  description: "Scalable clone of the Ecovilla Uhříněves marketing site."
+  title: "Na Blatnici - Frýdek-Místek",
+  description: "Moderní bydlení v projektu Na Blatnici ve Frýdku-Místku."
 };
 
 export default function RootLayout({

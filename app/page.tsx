@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { TwoColumnSection } from "@/components/TwoColumnSection";
 import { CtaStrip } from "@/components/CtaStrip";
 import { ContactSection } from "@/components/ContactSection";
 import { HomeHighlights } from "@/components/HomeHighlights";
@@ -27,22 +26,14 @@ export default function HomePage() {
 
       <HomeHighlights />
 
-      <TwoColumnSection
-        id="about"
-        title="Proč právě Ecovilla"
-        text="Originální homepage zdůrazňuje klidnou lokalitu, propojení s přírodou a promyšlené dispozice bytů. Tuto strukturu zrcadlíme – text, vizuální blok a jasné CTA – aby bylo snadné nahradit demo obsah produkčními texty."
-      />
+      <HomeChooseNowSection />
 
       <HomePhotoStrip />
 
       <HomeImportantSection />
 
-      <HomeChooseNowSection />
-
-      <HomeBytProVasSection />
-
       <CtaStrip
-        primary={{ href: "/cenik", label: "Start exploring" }}
+        primary={{ href: "/cenik", label: "Dispozice" }}
         secondary={{ href: "/standardy", label: "Standardy" }}
       />
 
