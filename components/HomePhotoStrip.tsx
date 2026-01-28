@@ -43,11 +43,8 @@ export function HomePhotoStrip() {
                 backgroundPosition: "center"
               }}
             >
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-                <span className="font-medium">{item.label}</span>
-                <span className="rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-neutral-900">
-                  {item.badge ?? `Interiér ${idx + 1}`}
-                </span>
+            <div className="absolute bottom-3 left-3 right-3 flex items-center text-xs text-white">
+              <span className="font-medium">{item.label}</span>
               </div>
             </div>
           ))}

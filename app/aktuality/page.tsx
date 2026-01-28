@@ -1,21 +1,21 @@
 const MILESTONES = [
   {
-    id: 1,
-    title: "Dokončení projektu",
-    date: "Duben 2025",
+    id: 2,
+    title: "Zahájení stavby",
+    date: "Únor 2026",
     status: "Plánováno",
     description:
-      "Plánované dokončení celého projektu včetně finálních úprav, kolaudace a předání bytů novým majitelům.",
-    side: "left"
+      "Plánované zahájení stavebních prací na bytovém domě včetně přípravy staveniště.",
+    side: "right"
   },
   {
-    id: 2,
-    title: "Dokončení vnitřních omítek",
-    date: "Červen 2025",
+    id: 1,
+    title: "Vydání stavebního povolení",
+    date: "Prosinec 2025",
     status: "Plánováno",
     description:
-      "Plánované dokončení vnitřních omítek a příprava prostor pro finální úpravy.",
-    side: "right"
+      "Předpokládané vydání pravomocného stavebního povolení pro projekt Na Blatnici.",
+    side: "left"
   }
 ];
 
@@ -28,11 +28,19 @@ export default function AktualityPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               {/* Left - Image */}
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-200" />
+              <div
+                className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-200"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0)), url('/fotky/fotografie-exterier/ex%20(2).jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center"
+                }}
+              />
 
               {/* Right - Text */}
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700">
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#12351c]/10 px-3 py-1 text-xs font-semibold text-[#12351c]">
                   <span>⚡</span>
                   <span>Aktuality stavby</span>
                 </div>
@@ -67,7 +75,7 @@ export default function AktualityPage() {
                     }`}
                   >
                     {/* Timeline Marker */}
-                    <div className="absolute left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full bg-teal-500" />
+                    <div className="absolute left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full bg-[#12351c]" />
 
                     {/* Content Card */}
                     <div

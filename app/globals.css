@@ -45,16 +45,22 @@ body {
 }
 
 .lh-zone {
-  fill: rgba(0, 217, 181, 0.1);
-  stroke: #00d9b5;
-  stroke-width: 3;
+  fill: rgba(18, 53, 28, 0.12); /* #12351C with low opacity */
+  stroke: #12351C;
+  stroke-width: 1.5;
   cursor: pointer;
   transition: fill 0.2s, stroke 0.2s;
 }
 
+.lh-zone--selected {
+  fill: rgba(18, 53, 28, 0.4); /* stronger fill for selected */
+  stroke: #12351C;
+  stroke-width: 2;
+}
+
 .lh-zone:hover {
-  fill: rgba(0, 217, 181, 0.35);
-  stroke: #00b192;
+  fill: rgba(18, 53, 28, 0.28);
+  stroke: #0b2414;
 }
 
 .lh-zone-label {

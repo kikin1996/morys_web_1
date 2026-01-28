@@ -5,7 +5,10 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Na Blatnici - Frýdek-Místek",
-  description: "Moderní bydlení v projektu Na Blatnici ve Frýdku-Místku."
+  description: "Moderní bydlení v projektu Na Blatnici ve Frýdku-Místku.",
+  icons: {
+    icon: "/images/hosue.png"
+  }
 };
 
 export default function RootLayout({

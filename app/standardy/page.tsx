@@ -35,13 +35,13 @@ export default function StandardyPage() {
       <section className="relative w-full px-4 py-8 sm:px-6 lg:px-8">
         <div className="relative mx-auto h-[80vh] min-h-[600px] max-w-7xl overflow-hidden rounded-[32px]">
           {/* Background image */}
-          <div
-            className="h-full w-full bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&q=80')"
-            }}
-          />
+          <div className="h-full w-full bg-cover bg-center">
+            <img
+              src="/images/vizualizace-interieru/b%20(7).jpg"
+              alt="Vizualizace interiéru bytu Na Blatnici"
+              className="h-full w-full object-cover"
+            />
+          </div>
 
           {/* Overlay s číslovanými kruhy */}
           <div className="absolute inset-0">
@@ -62,7 +62,7 @@ export default function StandardyPage() {
 
           {/* Title overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-5xl font-bold text-neutral-900 sm:text-6xl md:text-7xl">
+            <h1 className="text-5xl font-bold text-white sm:text-6xl md:text-7xl">
               Standardy
             </h1>
           </div>

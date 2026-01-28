@@ -55,16 +55,9 @@ export function Header() {
               </Link>
             );
           })}
-          <span
-            className={`ml-auto text-xs ${
-              isHome ? "text-white/80" : "text-neutral-900/70"
-            }`}
-          >
-            English
-          </span>
           <Link
             href="/vyber-bytu"
-            className="ml-4 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-semibold text-neutral-900 shadow-md hover:bg-neutral-100"
+            className="ml-auto inline-flex items-center gap-3 rounded-full bg-white px-5 py-2 text-sm font-semibold text-neutral-900 shadow-md hover:bg-neutral-100"
           >
             <span>Volné byty</span>
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#12351c] text-white text-xs">

@@ -11,18 +11,18 @@ export function HomeImportantSection() {
               <span>Důležité</span>
             </div>
             <h2 className="text-xl font-semibold tracking-tight text-neutral-900 sm:text-2xl">
-              ECOVILLA nabízí vše, co od svého bydlení očekáváte
+              Projekt Na Blatnici nabízí vše, co od svého bydlení očekáváte
             </h2>
             <p className="text-sm leading-relaxed text-neutral-600 sm:text-base">
-              Dům je navržen s důrazem na ekologii, úspornost a moderní
-              technologie – od fotovoltaiky na střeše přes centrální
-              rekuperaci až po chytrou domácnost. Kvalitní materiály, podlahové
-              vytápění, sklep ke každému bytu i příprava na elektromobilitu
-              jsou samozřejmostí.
+              Bytový dům Na Blatnici je navržen s důrazem na moderní komfort,
+              úspornost a kvalitní materiály. Velká okna, promyšlené dispozice
+              a návaznost na okolní zeleň vytvářejí příjemné prostředí pro
+              každodenní život.
             </p>
             <p className="text-sm leading-relaxed text-neutral-600 sm:text-base">
-              Díky promyšlenému řešení ušetříte nejen energii, ale i na
-              měsíčních poplatcích. Zjistěte více o standardech vybavení bytů.
+              Díky chytrému řešení technologií a standardů vybavení můžete
+              počítat s dlouhodobě nízkými provozními náklady i vysokou mírou
+              pohodlí. Zjistěte více o standardech vybavení bytů.
             </p>
             <Link
               href="/standardy"

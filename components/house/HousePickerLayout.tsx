@@ -22,7 +22,7 @@ type House = {
 const houses: House[] = [
   {
     id: "1",
-    name: "Dům 01",
+    name: "Byt 01",
     usableArea: 120,
     plotArea: 450,
     rooms: 4,
@@ -36,7 +36,7 @@ const houses: House[] = [
   },
   {
     id: "2",
-    name: "Dům 02",
+    name: "Byt 02",
     usableArea: 135,
     plotArea: 500,
     rooms: 5,
@@ -50,7 +50,7 @@ const houses: House[] = [
   },
   {
     id: "3",
-    name: "Dům 03",
+    name: "Byt 03",
     usableArea: 110,
     plotArea: 400,
     rooms: 3,
@@ -64,7 +64,7 @@ const houses: House[] = [
   },
   {
     id: "4",
-    name: "Dům 04",
+    name: "Byt 04",
     usableArea: 145,
     plotArea: 550,
     rooms: 5,
@@ -78,7 +78,7 @@ const houses: House[] = [
   },
   {
     id: "5",
-    name: "Dům 05",
+    name: "Byt 05",
     usableArea: 100,
     plotArea: 380,
     rooms: 3,
@@ -92,7 +92,7 @@ const houses: House[] = [
   },
   {
     id: "6",
-    name: "Dům 06",
+    name: "Byt 06",
     usableArea: 130,
     plotArea: 480,
     rooms: 4,
@@ -106,7 +106,7 @@ const houses: House[] = [
   },
   {
     id: "7",
-    name: "Dům 07",
+    name: "Byt 07",
     usableArea: 125,
     plotArea: 460,
     rooms: 4,
@@ -120,7 +120,7 @@ const houses: House[] = [
   },
   {
     id: "8",
-    name: "Dům 08",
+    name: "Byt 08",
     usableArea: 140,
     plotArea: 520,
     rooms: 5,
@@ -134,7 +134,7 @@ const houses: House[] = [
   },
   {
     id: "9",
-    name: "Dům 09",
+    name: "Byt 09",
     usableArea: 115,
     plotArea: 420,
     rooms: 4,
@@ -148,7 +148,7 @@ const houses: House[] = [
   },
   {
     id: "10",
-    name: "Dům 10",
+    name: "Byt 10",
     usableArea: 150,
     plotArea: 600,
     rooms: 6,
@@ -162,7 +162,7 @@ const houses: House[] = [
   },
   {
     id: "11",
-    name: "Dům 11",
+    name: "Byt 11",
     usableArea: 105,
     plotArea: 390,
     rooms: 3,
@@ -176,7 +176,7 @@ const houses: House[] = [
   },
   {
     id: "12",
-    name: "Dům 12",
+    name: "Byt 12",
     usableArea: 160,
     plotArea: 650,
     rooms: 6,
@@ -200,70 +200,68 @@ export default function HousePickerLayout() {
       <div className="mx-auto max-w-7xl px-4 py-12">
         {/* Jeden hlavní white card wrapper */}
         <div className="overflow-hidden rounded-[28px] border border-slate-200/70 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-10 lg:p-12">
-          {/* Horní část: nadpis + mapa */}
+          {/* Horní část: nadpis + 2 sloupce (dům / patro) */}
           <div className="space-y-6">
             {/* Nadpis */}
             <div>
               <h1 className="mb-2 text-4xl font-semibold text-slate-900">
-                Vyberte dům
+                Vyberte byt
               </h1>
               <p className="mt-2 text-slate-600">
-                Klikněte na dům v mapě nebo zvolte ze seznamu.
+                Klikněte na byt v mapě nebo zvolte ze seznamu.
               </p>
             </div>
 
-            {/* Mapa s polygony (klik na polygon vybírá dům) */}
-            <div className="relative">
-              <EmbeddedSitePreview
-                selectedHouseId={selectedHouseId}
-                onSelectHouse={setSelectedHouseId}
-              />
-            </div>
-          </div>
+            {/* 2 sloupce: vlevo dům (patra), vpravo půdorys patra */}
+            <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+              {/* Sloupec 1 – dům s patry */}
+              <div className="relative">
+                <EmbeddedSitePreview
+                  selectedHouseId={selectedHouseId}
+                  onSelectHouse={setSelectedHouseId}
+                />
+              </div>
 
-          {/* Spodní část: 3 sloupce s detailem vybraného domu */}
-          <div className="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
-            {/* Sloupec 1: Foto domu zblízka */}
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-slate-900">
-                Pohled na dům
-              </h3>
-              <div className="overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
+              {/* Sloupec 2 – půdorys patra pro výběr bytu (zatím jen náhled) */}
+              <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-slate-50">
+                <div className="border-b border-slate-100 px-5 py-3">
+                  <p className="text-sm font-semibold text-slate-900">
+                    Vyberte konkrétní byt v patře
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    Kliknutím na půdorys (bude doplněno) vyberete konkrétní jednotku.
+                  </p>
+                </div>
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  {selectedHouse?.heroImage ? (
-                    <img
-                      src={selectedHouse.heroImage}
-                      alt={selectedHouse.name}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200">
-                      <p className="text-sm text-slate-400">
-                        {selectedHouse?.name}
-                      </p>
-                    </div>
-                  )}
+                  <img
+                    src="/images/pudory.jpg"
+                    alt="Půdorys typického patra"
+                    className="h-full w-full object-contain"
+                  />
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Sloupec 2: Půdorysy */}
+          {/* Spodní část: 2 sloupce – půdorys bytu + informace o bytu */}
+          <div className="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+            {/* Sloupec 1: Půdorys bytu */}
             <div>
               <h3 className="mb-3 text-sm font-semibold text-slate-900">
-                Půdorysy
+                Půdorys bytu
               </h3>
               <div className="overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   {selectedHouse?.floorplanImage ? (
                     <img
                       src={selectedHouse.floorplanImage}
-                      alt={`${selectedHouse.name} – půdorys`}
+                      alt={`${selectedHouse.name} – půdorys bytu`}
                       className="h-full w-full object-cover"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200">
                       <p className="text-sm text-slate-400">
-                        Půdorys bude doplněn
+                        Půdorys bytu bude doplněn
                       </p>
                     </div>
                   )}
@@ -271,10 +269,10 @@ export default function HousePickerLayout() {
               </div>
             </div>
 
-            {/* Sloupec 3: Informace o domě */}
+            {/* Sloupec 2: Informace o bytu */}
             <div>
               <h3 className="mb-3 text-sm font-semibold text-slate-900">
-                Informace o domě
+                Informace o bytu
               </h3>
               <div className="rounded-2xl border border-slate-200/70 bg-slate-50 p-6">
                 {/* Status badge */}
@@ -294,7 +292,7 @@ export default function HousePickerLayout() {
                   </div>
                 )}
 
-                {/* Název domu */}
+                {/* Název bytu */}
                 <h2 className="mb-3 text-2xl font-semibold text-slate-900">
                   {selectedHouse?.name}
                 </h2>
@@ -311,7 +309,7 @@ export default function HousePickerLayout() {
                       href={selectedHouse.houseCardPdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00D9B5] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(0,217,181,0.3)] transition-all duration-200 hover:bg-[#00B89A] hover:shadow-[0_6px_16px_rgba(0,217,181,0.4)]"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#12351C] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(18,53,28,0.3)] transition-all duration-200 hover:bg-[#102c18] hover:shadow-[0_6px_16px_rgba(18,53,28,0.4)]"
                     >
                       <svg
                         className="h-5 w-5"
@@ -326,12 +324,12 @@ export default function HousePickerLayout() {
                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
-                      Karta domu (PDF)
+                      Karta bytu (PDF)
                     </a>
                   </div>
                 )}
 
-                {/* Metriky */}
+                {/* Metriky bytu */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
                     <p className="mb-1 text-xs text-slate-500">Užitná plocha</p>
@@ -341,23 +339,25 @@ export default function HousePickerLayout() {
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
-                    <p className="mb-1 text-xs text-slate-500">Plocha pozemku</p>
+                    <p className="mb-1 text-xs text-slate-500">Patro</p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {selectedHouse?.plotArea} m²
+                      {/* Demo hodnota patra – v reálné aplikaci přijde z dat */}
+                      3. NP
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
-                    <p className="mb-1 text-xs text-slate-500">Pokoje</p>
+                    <p className="mb-1 text-xs text-slate-500">Počet pokojů</p>
                     <p className="text-lg font-semibold text-slate-900">
                       {selectedHouse?.rooms}
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
-                    <p className="mb-1 text-xs text-slate-500">Koupelny</p>
+                    <p className="mb-1 text-xs text-slate-500">Velikost terasy</p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {selectedHouse?.bathrooms}
+                      {/* Demo hodnota terasy – v reálné aplikaci přijde z dat */}
+                      12 m²
                     </p>
                   </div>
                 </div>

@@ -39,39 +39,14 @@ export function Footer() {
                 <p className="text-xs uppercase tracking-[0.1em] text-white/60">
                   Developer projektu
                 </p>
-                <p className="mt-1 text-lg font-semibold">vivere</p>
-                <p className="text-sm text-white/80">real estate.</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.1em] text-white/60">
-                  Klientské centrum:
-                </p>
-                <p className="mt-1 text-white/90">
-                  Karolinská 707/7, 186 00 Praha 8 - Karlín, Budova Missouri
-                  park
-                </p>
+                <p className="mt-1 text-lg font-semibold">Ing. Radovan Morys</p>
               </div>
 
               <div>
                 <p className="text-xs uppercase tracking-[0.1em] text-white/60">
                   Specialista prodeje
                 </p>
-                <p className="mt-1 font-semibold">Josef Lebeda</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.1em] text-white/60">
-                  Prodej zajišťuje
-                </p>
-                <p className="mt-1 text-lg font-semibold">resimo</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.1em] text-white/60">
-                  Financující banka
-                </p>
-                <p className="mt-1 text-lg font-semibold">Raiffeisen BANK</p>
+                <p className="mt-1 font-semibold">Robert Goryl</p>
               </div>
 
               <div className="space-y-3">
@@ -82,10 +57,10 @@ export function Footer() {
                   <div>
                     <p className="text-xs text-white/60">E-mail</p>
                     <a
-                      href="mailto:info@resimo.cz"
+                      href="mailto:info@kurko.cz"
                       className="text-white hover:underline"
                     >
-                      info@resimo.cz
+                      info@kurko.cz
                     </a>
                   </div>
                 </div>
@@ -96,10 +71,10 @@ export function Footer() {
                   <div>
                     <p className="text-xs text-white/60">Telefon</p>
                     <a
-                      href="tel:+420737347067"
+                      href="tel:+420705008007"
                       className="text-white hover:underline"
                     >
-                      +420 737 347 067
+                      +420 705 008 007
                     </a>
                   </div>
                 </div>
@@ -111,14 +86,20 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <p>Webdesign & marketing: TRIUM.f</p>
+            <p>Web vytvořili Tours-3d.com</p>
             <p>© {new Date().getFullYear()} – Všechna práva vyhrazena</p>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white">
+            <a
+              href="/zasady-ochrany-osobnich-udaju"
+              className="hover:text-white"
+            >
               Zásady ochrany osobních údajů
             </a>
-            <a href="#" className="hover:text-white">
+            <a
+              href="/nastaveni-souboru-cookie"
+              className="hover:text-white"
+            >
               Nastavení souborů cookie
             </a>
           </div>

@@ -9,9 +9,10 @@ export function ContactSection() {
             <span className="block">otázkou</span>
           </h2>
           <p className="text-sm leading-relaxed text-neutral-600 sm:text-base">
-            Jsme tu pro vás. Obraťte se na nás s jakýmikoli dotazy – rádi vám
-            poskytneme veškeré informace a osobně vás provedeme výběrem bytu,
-            který naplní vaše očekávání.
+            Prodej bytů Na Blatnici zajišťuje realitní kancelář KURKO reality
+            s.r.o. Ozvěte se nám – rádi vám poskytneme veškeré informace,
+            poradíme s financováním a pomůžeme vám s výběrem bytu přesně pro
+            vás.
           </p>
           <div className="space-y-4 pt-2">
             <div className="flex items-center gap-3">
@@ -19,10 +20,10 @@ export function ContactSection() {
                 <span className="text-lg">✉</span>
               </div>
               <a
-                href="mailto:josef.lebeda@resimo.cz"
+                href="mailto:info@kurko.cz"
                 className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
               >
-                josef.lebeda@resimo.cz
+                info@kurko.cz
               </a>
             </div>
             <div className="flex items-center gap-3">
@@ -30,11 +31,39 @@ export function ContactSection() {
                 <span className="text-lg">📞</span>
               </div>
               <a
-                href="tel:+420737347067"
+                href="tel:+420705008007"
                 className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
               >
-                +420 737 347 067
+                +420 705 008 007
               </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-600">
+                <span className="text-lg">👤</span>
+              </div>
+              <div className="text-sm text-neutral-600">
+                <p className="font-semibold">
+                  Robert Goryl – specialista na trh s nemovitostmi
+                </p>
+                <p>
+                  Mobil:{" "}
+                  <a
+                    href="tel:+420770610020"
+                    className="hover:text-neutral-900 hover:underline"
+                  >
+                    +420 770 610 020
+                  </a>
+                </p>
+                <p>
+                  E-mail:{" "}
+                  <a
+                    href="mailto:robert.goryl@kurko.cz"
+                    className="hover:text-neutral-900 hover:underline"
+                  >
+                    robert.goryl@kurko.cz
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
