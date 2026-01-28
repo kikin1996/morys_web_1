@@ -22,7 +22,7 @@ export function Hero({
   return (
     <section className="bg-neutral-50 pb-6 pt-24 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">
       <div
-        className="mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
+        className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
         style={{
           backgroundImage:
             "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1)), url('/fotky/fotografie-exterier/ex%20(3).jpg')",
@@ -30,7 +30,16 @@ export function Hero({
           backgroundPosition: "left center"
         }}
       >
-        <div className="flex min-h-[70vh] flex-col px-6 pb-16 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
+        {/* Kostelní věž před textem a tlačítkem – zarovnaná přes původní fotku */}
+        <div className="pointer-events-none absolute inset-0 z-50 show-spire-xl">
+          <img
+            src="/fotky/fotografie-exterier/vez2.png"
+            alt="Kostelní věž"
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        <div className="relative z-20 flex min-h-[70vh] flex-col px-6 pb-16 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
           <div
             className={`max-w-xl space-y-6 ${
               alignRight ? "ml-auto text-right lg:mr-24" : ""

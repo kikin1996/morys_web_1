@@ -15,7 +15,7 @@ export default function HomePage() {
       <Hero
         title="Když bydlení znamená"
         highlightLine="životní styl"
-        subtitle="Technická kopie marketingového webu Ecovilla – stejné routy a rozložení sekcí, připravené pro napojení na reálná data a vlastní fotografie."
+        subtitle="Rezidenční projekt Na Blatnici ve Frýdku-Místku – moderní bydlení v klidné lokalitě s výhledem na kostelní věž a zeleň, připravené pro vaše vlastní příběhy."
         alignRight
         primaryCta={{ href: "/cenik", label: "Vyberte si svůj nový domov" }}
       />
