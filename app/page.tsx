@@ -7,7 +7,6 @@ import { HomeStats } from "@/components/HomeStats";
 import { UhrinevesSection } from "@/components/UhrinevesSection";
 import { HomeImportantSection } from "@/components/HomeImportantSection";
 import { HomeChooseNowSection } from "@/components/HomeChooseNowSection";
-import { HomeBytProVasSection } from "@/components/HomeBytProVasSection";
 
 export default function HomePage() {
   return (
