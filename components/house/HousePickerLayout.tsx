@@ -197,7 +197,7 @@ export default function HousePickerLayout() {
 
   return (
     <div className="min-h-screen bg-[#F5F7FB] pt-20">
-      <div className="mx-auto max-w-7xl px-4 py-12">
+      <div className="mx-auto max-w-[1792px] px-4 py-12">
         {/* Jeden hlavní white card wrapper */}
         <div className="overflow-hidden rounded-[28px] border border-slate-200/70 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-10 lg:p-12">
           {/* Horní část: nadpis + 2 sloupce (dům / patro) */}
@@ -222,22 +222,69 @@ export default function HousePickerLayout() {
                 />
               </div>
 
-              {/* Sloupec 2 – půdorys patra pro výběr bytu (zatím jen náhled) */}
+              {/* Sloupec 2 – půdorys patra podle vybraného patra v levém obrázku (1.–4. NP) */}
               <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-slate-50">
                 <div className="border-b border-slate-100 px-5 py-3">
                   <p className="text-sm font-semibold text-slate-900">
-                    Vyberte konkrétní byt v patře
+                    Půdorys {selectedHouseId}. patra
                   </p>
                   <p className="text-xs text-slate-500">
-                    Kliknutím na půdorys (bude doplněno) vyberete konkrétní jednotku.
+                    Klikněte na patro v levém obrázku – zobrazí se půdorys příslušného podlaží.
                   </p>
                 </div>
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                   <img
-                    src="/images/pudory.jpg"
-                    alt="Půdorys typického patra"
+                    src={`/images/2d-pudorysy/p${selectedHouseId}.jpg`}
+                    alt={`Půdorys ${selectedHouseId}. patra`}
                     className="h-full w-full object-contain"
                   />
+                  {/* Overlay – stejný viewBox jako fotka (3800×2687), škáluje se s obrázkem */}
+                  {selectedHouseId === "1" && (
+                    <svg
+                      className="absolute inset-0 h-full w-full"
+                      viewBox="0 0 3800 2687"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {/* Sekce A – Byt A (vaše souřadnice pro 3800×2687) */}
+                      <polygon
+                        points="234,2161 811,2115 811,2158 1119,2133 1119,814 234,814"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="3"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="677"
+                        y="1487"
+                        fill="#12351C"
+                        fontSize="110"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt A
+                      </text>
+                      {/* Sekce B – Byt B */}
+                      <polygon
+                        points="1119,2133 1351,2113 1351,2156 1890,2112 1890,2158 2439,2112 2439,818 1351,818 1351,1320 1119,1320"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="3"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1779"
+                        y="1487"
+                        fill="#12351C"
+                        fontSize="110"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt B
+                      </text>
+                    </svg>
+                  )}
                 </div>
               </div>
             </div>
