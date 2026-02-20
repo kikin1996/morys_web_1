@@ -283,6 +283,133 @@ export default function HousePickerLayout() {
                       >
                         Byt B
                       </text>
+                      {/* Sekce C – Byt C */}
+                      <polygon
+                        points="2439,2159 2972,2113 2972,2160 3543,2112 3542,818 2670,818 2670,1334 2439,1334"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="3"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="3006"
+                        y="1487"
+                        fill="#12351C"
+                        fontSize="110"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt C
+                      </text>
+                    </svg>
+                  )}
+                  {/* Overlay pro 2. patro – Byty D, E, F, G, H (viewBox pro 1920×1358 px) */}
+                  {selectedHouseId === "2" && (
+                    <svg
+                      className="absolute inset-0 h-full w-full"
+                      viewBox="0 0 1920 1358"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {/* Sekce D – Byt D */}
+                      <polygon
+                        points="117,1087 410,1066 410,959 425,959 425,403 117,403"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="271"
+                        y="745"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt D
+                      </text>
+
+                      {/* Sekce E – Byt E */}
+                      <polygon
+                        points="410,1091 684,1068 684,1089 825,1076 825,667 664,664 664,402 425,403 425,959 410,959"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="618"
+                        y="746"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt E
+                      </text>
+
+                      {/* Sekce F – Byt F */}
+                      <polygon
+                        points="825,1076 959,1065 959,1088 1234,1063 1234,954 1222,954 1222,410 964,410 964,667 825,667"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1030"
+                        y="749"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt F
+                      </text>
+
+                      {/* Sekce G – Byt G */}
+                      <polygon
+                        points="1234,1091 1511,1065 1511,954 1521,954 1524,635 1508,635 1508,410 1222,410 1222,954 1234,954"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1373"
+                        y="750"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt G
+                      </text>
+
+                      {/* Sekce H – Byt H */}
+                      <polygon
+                        points="1511,1089 1800,1065 1800,410 1508,410 1508,635 1524,635 1521,954 1511,954"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1654"
+                        y="750"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt H
+                      </text>
                     </svg>
                   )}
                 </div>
