@@ -42,9 +42,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.lh-zone {
+}.lh-zone {
   fill: rgba(18, 53, 28, 0.12); /* #12351C with low opacity */
   stroke: #12351C;
   stroke-width: 1.5;

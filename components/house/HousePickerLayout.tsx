@@ -412,6 +412,142 @@ export default function HousePickerLayout() {
                       </text>
                     </svg>
                   )}
+                  {/* Overlay pro 3. patro – Byt I (viewBox 1920×1358 px) */}
+                  {selectedHouseId === "3" && (
+                    <svg
+                      className="absolute inset-0 h-full w-full"
+                      viewBox="0 0 1920 1358"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {/* Sekce I – Byt I */}
+                      <polygon
+                        points="108,1089 401,1066 401,1089 558,1075 558,401 108,401"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="333"
+                        y="745"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt I
+                      </text>
+
+                      {/* Sekce J – Byt J */}
+                      <polygon
+                        points="558,1075 677,1064 677,1086 952,1064 952,1086 1241,1061 1241,401 960,401 960,662 558,662"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="900"
+                        y="744"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt J
+                      </text>
+
+                      {/* Sekce K – Byt K */}
+                      <polygon
+                        points="1231,1064 1231,1087 1505,1064 1505,1087 1798,1062 1798,407 1241,401 1241,1061"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1520"
+                        y="747"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt K
+                      </text>
+                    </svg>
+                  )}
+                  {/* Overlay pro 4. patro – Byt L, Byt M (viewBox 1920×1358 px) */}
+                  {selectedHouseId === "4" && (
+                    <svg
+                      className="absolute inset-0 h-full w-full"
+                      viewBox="0 0 1920 1358"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {/* Sekce L – Byt L */}
+                      <polygon
+                        points="119,1087 410,1067 410,1088 686,1066 686,952 671,952 671,408 530,408 530,323 118,337 408,332 408,310 118,337"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="400"
+                        y="700"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt L
+                      </text>
+
+                      {/* Sekce M – Byt M */}
+                      <polygon
+                        points="686,1087 959,1063 959,1085 1236,1062 1236,958 1250,958 1250,406 963,406 963,655 677,655 671,952 686,952"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="968"
+                        y="747"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt M
+                      </text>
+
+                      {/* Sekce N – Byt N */}
+                      <polygon
+                        points="1236,1086 1510,1064 1510,1086 1798,1061 1798,311 1507,333 1507,310 1385,322 1385,410 1250,406 1250,958 1236,958"
+                        fill="rgba(18,53,28,0.25)"
+                        stroke="#12351C"
+                        strokeWidth="2"
+                        className="cursor-pointer transition hover:fill-[rgba(18,53,28,0.4)]"
+                      />
+                      <text
+                        x="1517"
+                        y="699"
+                        fill="#12351C"
+                        fontSize="55"
+                        fontWeight="600"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        Byt N
+                      </text>
+                    </svg>
+                  )}
                 </div>
               </div>
             </div>
