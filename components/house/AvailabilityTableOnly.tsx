@@ -9,70 +9,140 @@ type Apartment = {
   floor: string;
   layout: string;
   area: number;
-  balcony: boolean;
-  terrace: boolean;
-  frontGarden: boolean;
-  price?: number;
+  price: number;
   status: "volný" | "prodaný" | "v přípravě";
 };
 
-// Mock data - v reálném projektu by toto přišlo z API nebo databáze
+// Data pro tabulku – byty A–N
 const apartments: Apartment[] = [
+  // 1. NP
   {
-    id: "1",
-    name: "1C",
+    id: "A",
+    name: "A",
     floor: "1.NP",
-    layout: "2+kk",
-    area: 47.4,
-    balcony: false,
-    terrace: false,
-    frontGarden: true,
-    status: "prodaný"
-  },
-  {
-    id: "2",
-    name: "2C",
-    floor: "2.NP",
-    layout: "4+kk",
-    area: 80,
-    balcony: true,
-    terrace: false,
-    frontGarden: false,
-    price: 13434364,
+    layout: "3+kk",
+    area: 125.14,
+    price: 999_999,
     status: "volný"
   },
   {
-    id: "3",
-    name: "3F",
-    floor: "3.NP",
-    layout: "2+kk",
-    area: 44.6,
-    balcony: true,
-    terrace: false,
-    frontGarden: false,
-    status: "v přípravě"
-  },
-  {
-    id: "4",
-    name: "3H",
-    floor: "3.NP",
-    layout: "1+kk",
-    area: 30.6,
-    balcony: true,
-    terrace: false,
-    frontGarden: false,
-    status: "v přípravě"
-  },
-  {
-    id: "5",
-    name: "ATELIER",
+    id: "B",
+    name: "B",
     floor: "1.NP",
+    layout: "3+kk",
+    area: 148.72,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "C",
+    name: "C",
+    floor: "1.NP",
+    layout: "3+kk",
+    area: 147.39,
+    price: 999_999,
+    status: "volný"
+  },
+  // 2. NP
+  {
+    id: "D",
+    name: "D",
+    floor: "2.NP",
     layout: "2+kk",
-    area: 57.8,
-    balcony: false,
-    terrace: false,
-    frontGarden: true,
-    price: 9420000,
+    area: 84.8,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "E",
+    name: "E",
+    floor: "2.NP",
+    layout: "2+kk",
+    area: 98.66,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "F",
+    name: "F",
+    floor: "2.NP",
+    layout: "2+kk",
+    area: 98.38,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "G",
+    name: "G",
+    floor: "2.NP",
+    layout: "2+kk",
+    area: 82.13,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "H",
+    name: "H",
+    floor: "2.NP",
+    layout: "2+kk",
+    area: 78.31,
+    price: 999_999,
+    status: "volný"
+  },
+  // 3. NP
+  {
+    id: "I",
+    name: "I",
+    floor: "3.NP",
+    layout: "3+kk",
+    area: 126.89,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "J",
+    name: "J",
+    floor: "3.NP",
+    layout: "3+kk",
+    area: 148.72,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "K",
+    name: "K",
+    floor: "3.NP",
+    layout: "3+kk",
+    area: 147.89,
+    price: 999_999,
+    status: "volný"
+  },
+  // 4. NP
+  {
+    id: "L",
+    name: "L",
+    floor: "4.NP",
+    layout: "3+kk",
+    area: 181.77,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "M",
+    name: "M",
+    floor: "4.NP",
+    layout: "3+kk",
+    area: 130.77,
+    price: 999_999,
+    status: "volný"
+  },
+  {
+    id: "N",
+    name: "N",
+    floor: "4.NP",
+    layout: "3+kk",
+    area: 181.44,
+    price: 999_999,
     status: "volný"
   }
 ];
@@ -82,9 +152,6 @@ export default function AvailabilityTableOnly() {
   const [statusFilter, setStatusFilter] = useState<Apartment["status"] | "vše">(
     "vše"
   );
-  const [outdoorFilter, setOutdoorFilter] = useState<
-    "vše" | "balkon" | "terasa" | "predzahrada"
-  >("vše");
   const [floorFilter, setFloorFilter] = useState<string | "vše">("vše");
 
   const formatPrice = (price: number) => {
@@ -134,17 +201,12 @@ export default function AvailabilityTableOnly() {
       if (statusFilter !== "vše" && apartment.status !== statusFilter)
         return false;
 
-      if (outdoorFilter === "balkon" && !apartment.balcony) return false;
-      if (outdoorFilter === "terasa" && !apartment.terrace) return false;
-      if (outdoorFilter === "predzahrada" && !apartment.frontGarden)
-        return false;
-
       if (floorFilter !== "vše" && apartment.floor !== floorFilter)
         return false;
 
       return true;
     });
-  }, [selectedLayout, statusFilter, outdoorFilter, floorFilter]);
+  }, [selectedLayout, statusFilter, floorFilter]);
 
   return (
     <div>
@@ -158,7 +220,7 @@ export default function AvailabilityTableOnly() {
                 Dispozice
               </span>
               <div className="flex flex-wrap gap-2">
-                {["1+kk", "2+kk", "3+kk", "4+kk"].map((layout) => {
+                {["2+kk", "3+kk"].map((layout) => {
                   const active = selectedLayout === layout;
                   return (
                     <button
@@ -202,27 +264,6 @@ export default function AvailabilityTableOnly() {
               </select>
             </div>
 
-            {/* Venkovní dispozice */}
-            <div className="flex flex-col gap-2 md:w-56">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
-                Venkovní dispozice
-              </span>
-              <select
-                className="w-full rounded-full border-0 bg-white px-4 py-2 text-sm font-medium text-neutral-900 outline-none"
-                value={outdoorFilter}
-                onChange={(e) =>
-                  setOutdoorFilter(
-                    e.target.value as "vše" | "balkon" | "terasa" | "predzahrada"
-                  )
-                }
-              >
-                <option value="vše">Vyberte</option>
-                <option value="balkon">Balkon</option>
-                <option value="terasa">Terasa</option>
-                <option value="predzahrada">Předzahrádka</option>
-              </select>
-            </div>
-
             {/* Podlaží */}
             <div className="flex flex-col gap-2 md:w-40">
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
@@ -261,20 +302,14 @@ export default function AvailabilityTableOnly() {
                 <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
                   Plocha
                 </th>
-                <th className="px-4 py-4 text-center text-sm font-semibold text-neutral-900">
-                  Balkon
-                </th>
-                <th className="px-4 py-4 text-center text-sm font-semibold text-neutral-900">
-                  Terasa
-                </th>
-                <th className="px-4 py-4 text-center text-sm font-semibold text-neutral-900">
-                  Předzahrada
-                </th>
                 <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
                   Cena
                 </th>
                 <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
                   Stav
+                </th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
+                  Karta bytu
                 </th>
               </tr>
             </thead>
@@ -296,89 +331,10 @@ export default function AvailabilityTableOnly() {
                   <td className="px-4 py-4 text-base text-neutral-700">
                     {formatArea(apartment.area)} m²
                   </td>
-                  <td className="px-4 py-4 text-center">
-                    {apartment.balcony ? (
-                      <svg
-                        className="mx-auto h-5 w-5 text-[#12351c]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    ) : (
-                      <span className="text-neutral-300">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    {apartment.terrace ? (
-                      <svg
-                        className="mx-auto h-5 w-5 text-[#12351c]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    ) : (
-                      <span className="text-neutral-300">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    {apartment.frontGarden ? (
-                      <svg
-                        className="mx-auto h-5 w-5 text-[#12351c]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    ) : (
-                      <span className="text-neutral-300">—</span>
-                    )}
-                  </td>
                   <td className="px-4 py-4">
-                    {apartment.price ? (
-                      <span className="text-base text-neutral-700">
-                        {formatPrice(apartment.price)} Kč
-                      </span>
-                    ) : (
-                      <Link
-                        href={`/vyber-bytu/${apartment.id}`}
-                        className="inline-flex items-center gap-2 rounded-lg bg-[#12351c] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a4a2d]"
-                      >
-                        <span>Detail bytu</span>
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </Link>
-                    )}
+                    <span className="text-base text-neutral-700">
+                      {formatPrice(apartment.price)} Kč
+                    </span>
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
@@ -391,6 +347,27 @@ export default function AvailabilityTableOnly() {
                         {getStatusText(apartment.status)}
                       </span>
                     </div>
+                  </td>
+                  <td className="px-4 py-4">
+                    <Link
+                      href={`/vyber-bytu/${apartment.id}`}
+                      className="inline-flex items-center gap-2 rounded-lg bg-[#12351c] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a4a2d]"
+                    >
+                      <span>Karta bytu</span>
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
                   </td>
                 </tr>
               ))}

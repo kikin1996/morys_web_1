@@ -18,6 +18,40 @@ type House = {
   houseCardPdf?: string | null;
 };
 
+// Mini galerie vizualizací interiéru pro stránku "Vyber byt"
+const INTERIOR_VISUALS = [
+  {
+    id: 1,
+    label: "Interiér – ložnice A1",
+    src: "/images/vizualizace-interieru/a%20(1).jpg"
+  },
+  {
+    id: 2,
+    label: "Interiér – ložnice A2",
+    src: "/images/vizualizace-interieru/a%20(2).jpg"
+  },
+  {
+    id: 3,
+    label: "Interiér – ložnice A3",
+    src: "/images/vizualizace-interieru/a%20(3).jpg"
+  },
+  {
+    id: 4,
+    label: "Interiér – obývací pokoj B1",
+    src: "/images/vizualizace-interieru/b%20(1).jpg"
+  },
+  {
+    id: 5,
+    label: "Interiér – obývací pokoj B2",
+    src: "/images/vizualizace-interieru/b%20(2).jpg"
+  },
+  {
+    id: 6,
+    label: "Interiér – kuchyně C2-1",
+    src: "/images/vizualizace-interieru/c2%20(1).jpg"
+  }
+];
+
 // Mock data - 12 domů s fotkami a půdorysy
 const houses: House[] = [
   {
@@ -190,10 +224,165 @@ const houses: House[] = [
   }
 ];
 
+type ApartmentInfo = {
+  code: string;
+  usableArea: string;
+  floor: string;
+  rooms: number;
+  outdoorLabel: string;
+  outdoorSize: string;
+};
+
+// Detailní informace o jednotlivých bytech (A–N) pro panel „Informace o bytu“
+const APARTMENT_INFO_BY_CODE: Record<string, ApartmentInfo> = {
+  // 1. NP
+  A: {
+    code: "A",
+    usableArea: "125,14 m²",
+    floor: "1. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "24,72 m²"
+  },
+  B: {
+    code: "B",
+    usableArea: "148,72 m²",
+    floor: "1. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "52,16 m²"
+  },
+  C: {
+    code: "C",
+    usableArea: "147,39 m²",
+    floor: "1. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "45,32 m²"
+  },
+  // 2. NP
+  D: {
+    code: "D",
+    usableArea: "84,80 m²",
+    floor: "2. NP",
+    rooms: 2,
+    outdoorLabel: "Balkon",
+    outdoorSize: "17,07 m²"
+  },
+  E: {
+    code: "E",
+    usableArea: "98,66 m²",
+    floor: "2. NP",
+    rooms: 2,
+    outdoorLabel: "Balkon",
+    outdoorSize: "24,06 m²"
+  },
+  F: {
+    code: "F",
+    usableArea: "98,38 m²",
+    floor: "2. NP",
+    rooms: 2,
+    outdoorLabel: "Balkon",
+    outdoorSize: "23,34 m²"
+  },
+  G: {
+    code: "G",
+    usableArea: "82,13 m²",
+    floor: "2. NP",
+    rooms: 2,
+    outdoorLabel: "Balkon",
+    outdoorSize: "82,13 m²"
+  },
+  H: {
+    code: "H",
+    usableArea: "78,31 m²",
+    floor: "2. NP",
+    rooms: 2,
+    outdoorLabel: "Balkon",
+    outdoorSize: "16,67 m²"
+  },
+  // 3. NP
+  I: {
+    code: "I",
+    usableArea: "126,89 m²",
+    floor: "3. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "26,47 m²"
+  },
+  J: {
+    code: "J",
+    usableArea: "148,72 m²",
+    floor: "3. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "52,16 m²"
+  },
+  K: {
+    code: "K",
+    usableArea: "147,89 m²",
+    floor: "3. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "45,82 m²"
+  },
+  // 4. NP
+  L: {
+    code: "L",
+    usableArea: "181,77 m²",
+    floor: "4. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "80,18 m²"
+  },
+  M: {
+    code: "M",
+    usableArea: "130,77 m²",
+    floor: "4. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "31,69 m²"
+  },
+  N: {
+    code: "N",
+    usableArea: "181,44 m²",
+    floor: "4. NP",
+    rooms: 3,
+    outdoorLabel: "Velikost terasy",
+    outdoorSize: "80,56 m²"
+  }
+};
+
 export default function HousePickerLayout() {
-  // Defaultně vybrán Dům 01
+  // Defaultně vybrán 1. půdorys (1. patro) a byt A
   const [selectedHouseId, setSelectedHouseId] = useState("1");
+  // Kód aktuálně vybraného bytu (A–N) z půdorysu
+  const [selectedApartmentCode, setSelectedApartmentCode] = useState<string | null>("A");
+  // Lightbox pro mini vizualizace interiéru
+  const [activeVisualIndex, setActiveVisualIndex] = useState<number | null>(null);
+  // Dočasné mapování pro 3D půdorysy – dokud nejsou hotové A, B, C
+  const resolved3dCode =
+    selectedApartmentCode === "A"
+      ? "I"
+      : selectedApartmentCode === "B"
+        ? "J"
+        : selectedApartmentCode === "C"
+          ? "K"
+          : selectedApartmentCode ?? null;
+
   const selectedHouse = houses.find((house) => house.id === selectedHouseId);
+  const selectedApartmentInfo = selectedApartmentCode
+    ? APARTMENT_INFO_BY_CODE[selectedApartmentCode] ?? null
+    : null;
+
+  // Při změně patra z levého náhledu nastavíme defaultní byt pro dané patro,
+  // aby se v sekci "Půdorys bytu" vždy zobrazil první byt daného patra.
+  const handleSelectHouse = (id: string) => {
+    setSelectedHouseId(id);
+    setSelectedApartmentCode(
+      id === "1" ? "A" : id === "2" ? "D" : id === "3" ? "I" : id === "4" ? "L" : null
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#F5F7FB] pt-20">
@@ -218,7 +407,7 @@ export default function HousePickerLayout() {
               <div className="relative">
                 <EmbeddedSitePreview
                   selectedHouseId={selectedHouseId}
-                  onSelectHouse={setSelectedHouseId}
+                  onSelectHouse={handleSelectHouse}
                 />
               </div>
 
@@ -253,6 +442,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("A")}
                         />
                         <text
                           x="342"
@@ -275,6 +465,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("B")}
                         />
                         <text
                           x="899"
@@ -297,6 +488,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("C")}
                         />
                         <text
                           x="1511"
@@ -328,6 +520,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("D")}
                         />
                         <text
                           x="271"
@@ -350,6 +543,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("E")}
                         />
                         <text
                           x="588"
@@ -372,6 +566,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("F")}
                         />
                         <text
                           x="1030"
@@ -394,6 +589,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("G")}
                         />
                         <text
                           x="1373"
@@ -416,6 +612,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("H")}
                         />
                         <text
                           x="1654"
@@ -447,6 +644,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("I")}
                         />
                         <text
                           x="333"
@@ -470,6 +668,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("J")}
                         />
                         <text
                           x="900"
@@ -493,6 +692,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("K")}
                         />
                         <text
                           x="1520"
@@ -524,6 +724,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("L")}
                         />
                         <text
                           x="400"
@@ -547,6 +748,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("M")}
                         />
                         <text
                           x="968"
@@ -570,6 +772,7 @@ export default function HousePickerLayout() {
                           stroke="#12351C"
                           strokeWidth="2"
                           className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                          onClick={() => setSelectedApartmentCode("N")}
                         />
                         <text
                           x="1517"
@@ -593,14 +796,20 @@ export default function HousePickerLayout() {
 
           {/* Spodní část: 2 sloupce – půdorys bytu + informace o bytu */}
           <div className="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
-            {/* Sloupec 1: Půdorys bytu */}
+            {/* Sloupec 1: Půdorys bytu (konkrétní byt po kliknutí v horním půdorysu) */}
             <div>
               <h3 className="mb-3 text-sm font-semibold text-slate-900">
                 Půdorys bytu
               </h3>
               <div className="overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  {selectedHouse?.floorplanImage ? (
+                  {resolved3dCode ? (
+                    <img
+                      src={`/3d-pudorysy/3d_pudorysy_byt${resolved3dCode}.jpg`}
+                      alt={`3D půdorys bytu ${resolved3dCode}`}
+                      className="h-full w-full object-contain"
+                    />
+                  ) : selectedHouse?.floorplanImage ? (
                     <img
                       src={selectedHouse.floorplanImage}
                       alt={`${selectedHouse.name} – půdorys bytu`}
@@ -623,26 +832,18 @@ export default function HousePickerLayout() {
                 Informace o bytu
               </h3>
               <div className="rounded-2xl border border-slate-200/70 bg-slate-50 p-6">
-                {/* Status badge */}
-                {selectedHouse?.status && (
-                  <div className="mb-4">
-                    <span
-                      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${
-                        selectedHouse.status === "Volný"
-                          ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                          : selectedHouse.status === "Rezervováno"
-                            ? "border-amber-200 bg-amber-50 text-amber-700"
-                            : "border-slate-200 bg-slate-100 text-slate-600"
-                      }`}
-                    >
-                      {selectedHouse.status}
-                    </span>
-                  </div>
-                )}
+                {/* Status badge – všechny byty jsou volné */}
+                <div className="mb-4">
+                  <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                    Volný
+                  </span>
+                </div>
 
                 {/* Název bytu */}
                 <h2 className="mb-3 text-2xl font-semibold text-slate-900">
-                  {selectedHouse?.name}
+                  {selectedApartmentInfo
+                    ? `Byt ${selectedApartmentInfo.code}`
+                    : selectedHouse?.name}
                 </h2>
 
                 {/* Popis */}
@@ -650,62 +851,66 @@ export default function HousePickerLayout() {
                   {selectedHouse?.description}
                 </p>
 
-                {/* Tlačítko Karta domu */}
-                {selectedHouse?.houseCardPdf && (
-                  <div className="mb-6">
-                    <a
-                      href={selectedHouse.houseCardPdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#12351C] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(18,53,28,0.3)] transition-all duration-200 hover:bg-[#102c18] hover:shadow-[0_6px_16px_rgba(18,53,28,0.4)]"
+                {/* Tlačítko Karta bytu (PDF) – vždy zobrazeno */}
+                <div className="mb-6">
+                  <a
+                    href={selectedApartmentInfo
+                      ? `/documents/karta-bytu-${selectedApartmentInfo.code}.pdf`
+                      : "/documents/karta-bytu.pdf"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#12351C] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(18,53,28,0.3)] transition-all duration-200 hover:bg-[#102c18] hover:shadow-[0_6px_16px_rgba(18,53,28,0.4)]"
+                  >
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      Karta bytu (PDF)
-                    </a>
-                  </div>
-                )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Karta bytu (PDF)
+                  </a>
+                </div>
 
                 {/* Metriky bytu */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
                     <p className="mb-1 text-xs text-slate-500">Užitná plocha</p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {selectedHouse?.usableArea} m²
+                      {selectedApartmentInfo
+                        ? selectedApartmentInfo.usableArea
+                        : selectedHouse
+                          ? `${selectedHouse.usableArea} m²`
+                          : "—"}
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
                     <p className="mb-1 text-xs text-slate-500">Patro</p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {/* Demo hodnota patra – v reálné aplikaci přijde z dat */}
-                      3. NP
+                      {selectedApartmentInfo?.floor ?? "—"}
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
                     <p className="mb-1 text-xs text-slate-500">Počet pokojů</p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {selectedHouse?.rooms}
+                      {selectedApartmentInfo?.rooms ?? selectedHouse?.rooms ?? "—"}
                     </p>
                   </div>
 
                   <div className="rounded-lg border border-slate-200/70 bg-white p-4">
-                    <p className="mb-1 text-xs text-slate-500">Velikost terasy</p>
+                    <p className="mb-1 text-xs text-slate-500">
+                      {selectedApartmentInfo?.outdoorLabel ?? "Velikost terasy"}
+                    </p>
                     <p className="text-lg font-semibold text-slate-900">
-                      {/* Demo hodnota terasy – v reálné aplikaci přijde z dat */}
-                      12 m²
+                      {selectedApartmentInfo?.outdoorSize ?? "—"}
                     </p>
                   </div>
                 </div>
@@ -713,8 +918,31 @@ export default function HousePickerLayout() {
             </div>
           </div>
 
-          {/* Divider před tabulkou */}
+          {/* Divider před mini galerií a tabulkou */}
           <div className="mt-12 border-t border-slate-100" />
+
+          {/* Mini galerie vizualizací interiéru – nad tabulkou */}
+          <div className="mt-10">
+            <h3 className="mb-4 text-sm font-semibold text-slate-900">
+              Vizualizace interiéru
+            </h3>
+            <div className="-mx-1 flex gap-3 overflow-x-auto pb-1">
+              {INTERIOR_VISUALS.map((img, index) => (
+                <button
+                  key={img.id}
+                  type="button"
+                  className="group relative inline-flex h-32 w-48 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-100 shadow-sm transition hover:-translate-y-0.5 hover:border-[#12351c]/60 hover:shadow-md"
+                  onClick={() => setActiveVisualIndex(index)}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.label}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
 
           {/* Tabulka dostupnosti (bez mapy) */}
           <div className="mt-12">
@@ -722,6 +950,61 @@ export default function HousePickerLayout() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox pro vizualizace interiéru */}
+      {activeVisualIndex !== null && INTERIOR_VISUALS[activeVisualIndex] && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4"
+          onClick={() => setActiveVisualIndex(null)}
+        >
+          <div
+            className="relative max-h-[90vh] w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute right-2 top-2 rounded-full bg-black/60 px-3 py-1 text-sm font-semibold text-white hover:bg-black/80"
+              onClick={() => setActiveVisualIndex(null)}
+            >
+              Zavřít
+            </button>
+
+            {/* Šipka zpět */}
+            {activeVisualIndex > 0 && (
+              <button
+                type="button"
+                className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white hover:bg-black/80"
+                onClick={() =>
+                  setActiveVisualIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev))
+                }
+              >
+                ‹
+              </button>
+            )}
+
+            {/* Šipka vpřed */}
+            {activeVisualIndex < INTERIOR_VISUALS.length - 1 && (
+              <button
+                type="button"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white hover:bg-black/80"
+                onClick={() =>
+                  setActiveVisualIndex((prev) =>
+                    prev !== null && prev < INTERIOR_VISUALS.length - 1 ? prev + 1 : prev
+                  )
+                }
+              >
+                ›
+              </button>
+            )}
+
+            <img
+              src={INTERIOR_VISUALS[activeVisualIndex].src}
+              alt={INTERIOR_VISUALS[activeVisualIndex].label}
+              className="max-h-[85vh] w-full rounded-2xl object-contain bg-neutral-900"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

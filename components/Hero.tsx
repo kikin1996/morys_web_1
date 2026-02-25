@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 type HeroProps = {
   eyebrow?: string;
@@ -19,21 +22,32 @@ export function Hero({
   highlightLine,
   alignRight
 }: HeroProps) {
+  const [mode, setMode] = useState<"day" | "night">("day");
+
+  const backgroundBase =
+    mode === "day"
+      ? "/hlavni-stranka-fotky/den1.jpg"
+      : "/hlavni-stranka-fotky/noc1.jpg";
+
+  const spireOverlay =
+    mode === "day"
+      ? "/hlavni-stranka-fotky/vez__den1.png"
+      : "/hlavni-stranka-fotky/vez__noc1.png";
+
   return (
     <section className="bg-neutral-50 pb-6 pt-24 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">
       <div
         className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
         style={{
-          backgroundImage:
-            "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1)), url('/fotky/fotografie-exterier/ex%20(3).jpg')",
+          backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1)), url('${backgroundBase}')`,
           backgroundSize: "cover",
           backgroundPosition: "left center"
         }}
       >
-        {/* Kostelní věž před textem a tlačítkem – zarovnaná přes původní fotku */}
+        {/* Kostelní věž před textem a tlačítkem – denní / noční varianta */}
         <div className="pointer-events-none absolute inset-0 z-50 show-spire-xl">
           <img
-            src="/fotky/fotografie-exterier/vez2.png"
+            src={spireOverlay}
             alt="Kostelní věž"
             className="h-full w-full object-cover"
           />
@@ -56,39 +70,56 @@ export function Hero({
                 <span className="block text-[#f4f0e6]">{highlightLine}</span>
               )}
             </h1>
-          {subtitle && (
-            <p className="text-sm leading-relaxed text-neutral-100 sm:text-base">
-              {subtitle}
-            </p>
-          )}
-          {(primaryCta || secondaryCta) && (
-            <div
-              className={`flex flex-wrap items-center gap-3 pt-2 ${
-                alignRight ? "justify-end" : ""
-              }`}
-            >
-              {primaryCta && (
-                <Link
-                  href={primaryCta.href}
-                  className="inline-flex items-center gap-3 rounded-full bg-[#f4f0e6] px-7 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#ece3d3]"
-                >
-                  <span>{primaryCta.label}</span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#12351c] text-xs text-white">
-                    ➜
-                  </span>
-                </Link>
-              )}
-              {secondaryCta && (
-                <Link
-                  href={secondaryCta.href}
-                  className="rounded-full border border-white/70 px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
-                >
-                  {secondaryCta.label}
-                </Link>
-              )}
-            </div>
-          )}
+            {subtitle && (
+              <p className="text-sm leading-relaxed text-neutral-100 sm:text-base">
+                {subtitle}
+              </p>
+            )}
+
+            {(primaryCta || secondaryCta) && (
+              <div
+                className={`flex flex-wrap items-center gap-3 pt-2 ${
+                  alignRight ? "justify-end" : ""
+                }`}
+              >
+                {primaryCta && (
+                  <Link
+                    href={primaryCta.href}
+                    className="inline-flex items-center gap-3 rounded-full bg-[#f4f0e6] px-7 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#ece3d3]"
+                  >
+                    <span>{primaryCta.label}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#12351c] text-xs text-white">
+                      ➜
+                    </span>
+                  </Link>
+                )}
+                {secondaryCta && (
+                  <Link
+                    href={secondaryCta.href}
+                    className="rounded-full border border-white/70 px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+                  >
+                    {secondaryCta.label}
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
+        </div>
+
+        {/* Přepínač Den / Noc – styl podle dodaného HTML/CSS */}
+        <div className="pointer-events-auto absolute bottom-10 right-10 z-50">
+          <button
+            id="button-wrapper"
+            data-time={mode}
+            type="button"
+            onClick={() => setMode(mode === "day" ? "night" : "day")}
+            className="hero-toggle"
+            aria-label={mode === "day" ? "Přepnout na noc" : "Přepnout na den"}
+          >
+            <span id="button" className="hero-toggle-button" />
+            {/* Pokud budeš chtít hvězdy, můžeme sem později přidat canvas */}
+            {/* <canvas id="stars" className="hero-toggle-stars" /> */}
+          </button>
         </div>
       </div>
     </section>

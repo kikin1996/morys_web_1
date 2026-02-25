@@ -83,3 +83,159 @@ body {
     display: block;
   }
 }
+
+/* --- Hero Day/Night toggle --- */
+:root {
+  --hero-ease: cubic-bezier(.4,-0.3,.6,1.3);
+  --hero-bg-day: #1b7fcc;
+  --hero-bg-night: #070b34;
+
+  --hero-sun: #FCE570;
+  --hero-sun-light: #ffffe3;
+  --hero-moon: hsl(212, 13%, 75%);
+
+  /* základní velikost přepínače (zvětšeno o 50 %) */
+  --hero-button-size: 3.75em;
+}
+
+.hero-toggle {
+  --x: 6px;
+  --y: 10px;
+  --spread: 8px;
+  --offset: 0px;
+
+  position: relative;
+  background-color: var(--hero-bg-day);
+  width: 12em;
+  height: 4.5em;
+  border-radius: 2em;
+  border: none;
+  overflow: hidden;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow:
+    var(--x) var(--y) var(--spread) var(--offset) rgb(0 0 0 / 0.15),
+    var(--x) var(--y) var(--spread) var(--offset) rgb(0 0 0 / 0.25),
+    inset var(--x) var(--y) var(--spread) var(--offset) rgb(255 255 255 / 0.35);
+  isolation: isolate;
+  transition: all 0.75s var(--hero-ease);
+}
+
+.hero-toggle-button {
+  position: absolute;
+  left: 0.25em;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: var(--hero-button-size);
+  height: var(--hero-button-size);
+  border-radius: 50%;
+  background: radial-gradient(var(--hero-sun-light), transparent);
+  background-color: var(--hero-sun);
+  box-shadow:
+    0 0 0 1em rgb(255 255 255 / 0.2),
+    0 0 0 2em rgb(255 255 255 / 0.2),
+    0 0 0 3em rgb(255 255 255 / 0.2),
+    0 0 0.5em 0 #fff;
+  transition: all 0.75s var(--hero-ease);
+}
+
+.hero-toggle-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 25%;
+  height: 25%;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow:
+    -0.95em -0.75em 0 0.1em transparent,
+    0.1em -1em 0 -0.1em transparent;
+  transition: all 0.3s ease;
+}
+
+.hero-toggle::before {
+  content: "";
+  position: absolute;
+  width: 2.5em;
+  aspect-ratio: 1 / 1;
+  background-color: #fff;
+  border-radius: 50%;
+  right: -0.25em;
+  bottom: 0.4em;
+  box-shadow:
+    -1em 1em 0 -0.25em #fff,
+    -2em 1.25em 0 -0.5em #fff,
+    -3em 1.5em 0 -0.25em #fff,
+    -4em 1.5em 0 -0.6em #fff,
+    -5em 1.75em 0 -0.5em #fff;
+  opacity: 0.5;
+  transition: all 0.75s ease;
+}
+
+.hero-toggle::after {
+  content: "";
+  position: absolute;
+  width: var(--hero-button-size);
+  height: var(--hero-button-size);
+  background-color: #fff;
+  border-radius: 50%;
+  right: -1em;
+  bottom: 0;
+  box-shadow:
+    -1em 1em 0 -0.25em #fff,
+    -2em 1.25em 0 -0.5em #fff,
+    -3em 1.5em 0 -0.25em #fff,
+    -4em 1.5em 0 -0.6em #fff,
+    -5em 1.75em 0 -0.5em #fff;
+  transition: all 0.75s ease;
+}
+
+.hero-toggle[data-time="night"] {
+  background-color: var(--hero-bg-night);
+}
+
+.hero-toggle[data-time="night"] .hero-toggle-button {
+  background: radial-gradient(#eee, transparent);
+  background-color: var(--hero-moon);
+  left: calc(100% - 0.25em - var(--hero-button-size));
+  box-shadow:
+    0 0 0 1em rgb(255 255 255 / 0.1),
+    0 0 0 2em rgb(255 255 255 / 0.1),
+    0 0 0 3em rgb(255 255 255 / 0.1),
+    0 0 0.5em 0 #fff;
+}
+
+.hero-toggle[data-time="night"] .hero-toggle-button::after {
+  transition-delay: 0.5s;
+  background-color: #c5c5c5ff;
+  box-shadow:
+    -0.95em -0.75em 0 0.1em #d5d5d5ff,
+    0.1em -1em 0 -0.1em #d5d5d5ff;
+}
+
+.hero-toggle[data-time="night"]::before {
+  right: -5em;
+  bottom: -1em;
+  scale: 2;
+}
+
+.hero-toggle[data-time="night"]::after {
+  right: -5em;
+  bottom: -2em;
+  scale: 3;
+}
+
+.hero-toggle canvas.hero-toggle-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.75s ease;
+}
+
+.hero-toggle[data-time="night"] canvas.hero-toggle-stars {
+  opacity: 1;
+}
