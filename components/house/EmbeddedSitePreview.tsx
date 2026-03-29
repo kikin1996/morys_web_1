@@ -23,7 +23,7 @@ export default function EmbeddedSitePreview({
               className="luchnihaj-map-svg"
             >
               <image
-                href="/fotky/fotografie-exterier/drone2.jpg"
+                href="/fotky/fotografie-exterier/drone2.webp"
                 x="0"
                 y="0"
                 width="742"

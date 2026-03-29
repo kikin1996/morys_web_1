@@ -88,7 +88,7 @@ export default function StandardyPage() {
       {/* Dark green bar s číslovaným seznamem */}
       <section className="bg-[#12351c] py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-flow-col lg:grid-rows-3">
             {STANDARDS.map((standard) => (
               <div
                 key={standard.number}

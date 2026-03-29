@@ -27,7 +27,7 @@ export function UhrinevesSection() {
             className="aspect-[4/3] w-full rounded-3xl bg-cover bg-center shadow-sm"
             style={{
               backgroundImage:
-                "linear-gradient(to top, rgba(0,0,0,0.15), rgba(0,0,0,0.05)), url('/fotky/fotografie-exterier/ex%20(4).jpg')"
+                "linear-gradient(to top, rgba(0,0,0,0.15), rgba(0,0,0,0.05)), url('/fotky/fotografie-exterier/ex%20(4).webp')"
             }}
           />
         </div>

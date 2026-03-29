@@ -32,7 +32,7 @@ export default function AktualityPage() {
                 className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-200"
                 style={{
                   backgroundImage:
-                    "linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0)), url('/fotky/fotografie-exterier/ex%20(2).jpg')",
+                    "linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0)), url('/fotky/fotografie-exterier/ex%20(2).webp')",
                   backgroundSize: "cover",
                   backgroundPosition: "center center"
                 }}
