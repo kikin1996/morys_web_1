@@ -40,6 +40,7 @@ export default function HousePickerLayout() {
   const [selectedFloor, setSelectedFloor] = useState<string | null>(null);
   const [selectedApartmentCode, setSelectedApartmentCode] = useState<string | null>(null);
   const [floorplanLightbox, setFloorplanLightbox] = useState(false);
+  const [animDir, setAnimDir] = useState<"right" | "left">("right");
 
   const resolved3dCode =
     selectedApartmentCode === "A" ? "I"
@@ -51,12 +52,17 @@ export default function HousePickerLayout() {
     ? APARTMENT_INFO_BY_CODE[selectedApartmentCode] ?? null
     : null;
 
+  const DEFAULT_APARTMENT: Record<string, string> = { "1": "A", "2": "D", "3": "I", "4": "L" };
+  const aptG = (code: string) => `group/apartment${selectedApartmentCode === code ? " selected-apt" : ""}`;
+
   const handleSelectFloor = (id: string) => {
+    setAnimDir("right");
     setSelectedFloor(id);
-    setSelectedApartmentCode(null);
+    setSelectedApartmentCode(DEFAULT_APARTMENT[id] ?? null);
   };
 
   const handleBackToBuilding = () => {
+    setAnimDir("left");
     setSelectedFloor(null);
     setSelectedApartmentCode(null);
   };
@@ -90,6 +96,7 @@ export default function HousePickerLayout() {
           </div>
 
           {/* Foto budovy nebo půdorys patra – přes celou šířku */}
+          <div key={selectedFloor ?? "building"} className={animDir === "right" ? "animate-slide-right" : "animate-slide-left"}>
           {!selectedFloor ? (
             /* ── Foto budovy ── */
             <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
@@ -169,21 +176,21 @@ export default function HousePickerLayout() {
               {/* SVG overlay byty – 1. NP */}
               {selectedFloor === "1" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
-                  <g className="group/apartment">
+                  <g className={aptG("A")}>
                     <polygon points="118,1092 410,1069 410,1090 565,1078 565,404 118,404" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("A")} />
                     <text x="342" y="788" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt A</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("B")}>
                     <polygon points="565,1078 683,1068 683,1089 955,1067 955,1090 1232,1067 1232,401 964,401 964,658 565,658" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("B")} />
                     <text x="899" y="788" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt B</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("C")}>
                     <polygon points="1232,1091 1502,1068 1502,1091 1790,1067 1790,401 1339,401 1339,658 1232,658" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("C")} />
@@ -196,35 +203,35 @@ export default function HousePickerLayout() {
               {/* SVG overlay byty – 2. NP */}
               {selectedFloor === "2" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
-                  <g className="group/apartment">
+                  <g className={aptG("D")}>
                     <polygon points="117,1087 410,1066 410,959 425,959 425,403 117,403" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("D")} />
                     <text x="271" y="785" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt D</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("E")}>
                     <polygon points="410,1091 684,1068 684,1089 825,1076 825,667 664,664 664,401 425,401 425,959 410,959" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("E")} />
                     <text x="588" y="786" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt E</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("F")}>
                     <polygon points="825,1076 959,1065 959,1088 1234,1063 1234,954 1222,954 1222,401 964,401 964,667 825,667" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("F")} />
                     <text x="1030" y="789" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt F</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("G")}>
                     <polygon points="1234,1091 1511,1065 1511,954 1521,954 1524,635 1508,635 1508,401 1222,401 1222,954 1234,954" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("G")} />
                     <text x="1373" y="790" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt G</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("H")}>
                     <polygon points="1511,1089 1800,1065 1800,401 1508,401 1508,635 1524,635 1521,954 1511,954" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("H")} />
@@ -237,21 +244,21 @@ export default function HousePickerLayout() {
               {/* SVG overlay byty – 3. NP */}
               {selectedFloor === "3" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
-                  <g className="group/apartment">
+                  <g className={aptG("I")}>
                     <polygon points="108,1089 401,1066 401,1089 558,1075 558,401 108,401" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("I")} />
                     <text x="333" y="785" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt I</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("J")}>
                     <polygon points="558,1075 677,1064 677,1086 952,1064 952,1086 1241,1061 1241,401 960,401 960,662 558,662" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("J")} />
                     <text x="900" y="784" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt J</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("K")}>
                     <polygon points="1231,1064 1231,1087 1505,1064 1505,1087 1798,1062 1798,401 1344,401 1344,658 1241,658 1241,1061" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("K")} />
@@ -264,21 +271,21 @@ export default function HousePickerLayout() {
               {/* SVG overlay byty – 4. NP */}
               {selectedFloor === "4" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
-                  <g className="group/apartment">
+                  <g className={aptG("L")}>
                     <polygon points="119,1087 410,1067 410,1088 686,1066 686,952 671,952 671,408 530,408 530,323 118,337 408,332 408,310 118,337" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("L")} />
                     <text x="400" y="740" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt L</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("M")}>
                     <polygon points="686,1087 959,1063 959,1085 1236,1062 1236,958 1250,958 1250,406 963,406 963,655 677,655 671,952 686,952" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("M")} />
                     <text x="968" y="787" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt M</text>
                   </g>
-                  <g className="group/apartment">
+                  <g className={aptG("N")}>
                     <polygon points="1236,1086 1510,1064 1510,1086 1798,1061 1798,311 1507,333 1507,310 1385,322 1385,410 1250,406 1250,958 1236,958" fill="transparent" stroke="#12351C" strokeWidth="2"
                       className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
                       onClick={() => setSelectedApartmentCode("N")} />
@@ -289,6 +296,7 @@ export default function HousePickerLayout() {
               )}
             </div>
           )}
+          </div>{/* konec animovaného wrapperu */}
 
           {/* 2 sloupce – Informace o bytu + Půdorys bytu (jen pokud je vybráno patro a byt) */}
           {selectedFloor && selectedApartmentCode && (

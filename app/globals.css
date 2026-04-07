@@ -7,6 +7,32 @@ body {
   scroll-behavior: smooth;
 }
 
+@keyframes slideInRight {
+  from { transform: translateX(60px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-60px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+/* Vybraný byt v půdorysu – trvale vyznačen */
+.selected-apt polygon {
+  fill: rgba(18, 53, 28, 0.35);
+}
+.selected-apt text {
+  opacity: 1 !important;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.5s ease-out both;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.5s ease-out both;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
