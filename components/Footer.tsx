@@ -15,15 +15,15 @@ export function Footer() {
                 neunikne.
               </p>
             </div>
-            <form className="flex gap-2">
+            <form className="flex flex-col gap-3 sm:flex-row sm:gap-2">
               <input
                 type="email"
                 placeholder="Zadejte e-mail"
-                className="flex-1 rounded-xl bg-[#1e4a2d] px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/20"
+                className="min-w-0 flex-1 rounded-xl bg-[#1e4a2d] px-4 py-3 text-base text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/20"
               />
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#1e4a2d] px-6 py-3 text-sm font-semibold text-white hover:bg-[#2a5a3d]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1e4a2d] px-6 py-3 text-sm font-semibold text-white hover:bg-[#2a5a3d] sm:w-auto"
               >
                 Odběr
                 <span>➜</span>

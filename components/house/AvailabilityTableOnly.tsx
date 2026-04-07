@@ -285,87 +285,66 @@ export default function AvailabilityTableOnly() {
           </div>
         </div>
 
-        {/* Tabulka */}
-        <div className="overflow-x-auto">
+        {/* Kartičky – mobil */}
+        <div className="space-y-3 md:hidden">
+          {filteredApartments.map((apartment) => (
+            <div key={apartment.id} className="rounded-2xl border border-neutral-200 bg-white p-4">
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-lg font-semibold text-neutral-900">Byt {apartment.name}</span>
+                <div className="flex items-center gap-1.5">
+                  <span className={`h-2 w-2 rounded-full ${getStatusColor(apartment.status)}`} />
+                  <span className="text-sm text-neutral-600">{getStatusText(apartment.status)}</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div><span className="text-neutral-500">Podlaží</span><p className="font-medium text-neutral-900">{apartment.floor}</p></div>
+                <div><span className="text-neutral-500">Dispozice</span><p className="font-medium text-neutral-900">{apartment.layout}</p></div>
+                <div><span className="text-neutral-500">Plocha</span><p className="font-medium text-neutral-900">{formatArea(apartment.area)} m²</p></div>
+                <div><span className="text-neutral-500">Cena</span><p className="font-medium text-neutral-900">{formatPrice(apartment.price)} Kč</p></div>
+              </div>
+              <Link
+                href={`/vyber-bytu/${apartment.id}`}
+                className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#12351c] px-4 py-3 text-sm font-semibold text-white"
+              >
+                Karta bytu
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Tabulka – desktop */}
+        <div className="hidden overflow-x-auto md:block">
           <table className="w-full border-collapse bg-white">
             <thead>
               <tr className="border-b border-neutral-200">
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Byt
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Podlaží
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Dispozice
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Plocha
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Cena
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Stav
-                </th>
-                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">
-                  Karta bytu
-                </th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Byt</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Podlaží</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Dispozice</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Plocha</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Cena</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Stav</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-neutral-900">Karta bytu</th>
               </tr>
             </thead>
             <tbody>
               {filteredApartments.map((apartment) => (
-                <tr
-                  key={apartment.id}
-                  className="border-b border-neutral-100 transition-colors hover:bg-neutral-50"
-                >
-                  <td className="px-4 py-4 text-base font-medium text-neutral-900">
-                    {apartment.name}
-                  </td>
-                  <td className="px-4 py-4 text-base text-neutral-700">
-                    {apartment.floor}
-                  </td>
-                  <td className="px-4 py-4 text-base text-neutral-700">
-                    {apartment.layout}
-                  </td>
-                  <td className="px-4 py-4 text-base text-neutral-700">
-                    {formatArea(apartment.area)} m²
-                  </td>
-                  <td className="px-4 py-4">
-                    <span className="text-base text-neutral-700">
-                      {formatPrice(apartment.price)} Kč
-                    </span>
-                  </td>
+                <tr key={apartment.id} className="border-b border-neutral-100 transition-colors hover:bg-neutral-50">
+                  <td className="px-4 py-4 text-base font-medium text-neutral-900">{apartment.name}</td>
+                  <td className="px-4 py-4 text-base text-neutral-700">{apartment.floor}</td>
+                  <td className="px-4 py-4 text-base text-neutral-700">{apartment.layout}</td>
+                  <td className="px-4 py-4 text-base text-neutral-700">{formatArea(apartment.area)} m²</td>
+                  <td className="px-4 py-4"><span className="text-base text-neutral-700">{formatPrice(apartment.price)} Kč</span></td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
-                      <span
-                        className={`h-2 w-2 rounded-full ${getStatusColor(
-                          apartment.status
-                        )}`}
-                      />
-                      <span className="text-base text-neutral-700">
-                        {getStatusText(apartment.status)}
-                      </span>
+                      <span className={`h-2 w-2 rounded-full ${getStatusColor(apartment.status)}`} />
+                      <span className="text-base text-neutral-700">{getStatusText(apartment.status)}</span>
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <Link
-                      href={`/vyber-bytu/${apartment.id}`}
-                      className="inline-flex items-center gap-2 rounded-lg bg-[#12351c] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a4a2d]"
-                    >
+                    <Link href={`/vyber-bytu/${apartment.id}`} className="inline-flex items-center gap-2 rounded-lg bg-[#12351c] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a4a2d]">
                       <span>Karta bytu</span>
-                      <svg
-                        className="h-4 w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </Link>
                   </td>

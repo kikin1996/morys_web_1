@@ -63,7 +63,7 @@ export default function HousePickerLayout() {
 
   return (
     <div className="min-h-screen bg-[#F5F7FB] pt-20">
-      <div className="mx-auto w-[80%] px-4 py-12">
+      <div className="mx-auto w-full px-4 py-6 sm:py-10 md:w-[90%] lg:w-[80%]">
         <div className="overflow-hidden rounded-[28px] border border-slate-200/70 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-10 lg:p-12">
 
           {/* Nadpis */}
@@ -344,7 +344,7 @@ export default function HousePickerLayout() {
               <div>
                 <h3 className="mb-3 text-sm font-semibold text-slate-900">Půdorys bytu</h3>
                 <div className="overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
-                  <div className="relative h-[420px] w-full overflow-hidden">
+                  <div className="relative h-[240px] w-full overflow-hidden sm:h-[340px] lg:h-[420px]">
                     {resolved3dCode ? (
                       <button
                         type="button"

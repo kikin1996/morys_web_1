@@ -33,7 +33,7 @@ export default function StandardyPage() {
     <div className="min-h-screen bg-[#F5F7FB] pb-12 pt-20">
       {/* Hero section s obrázkem a číslovanými kruhy - ponecháno z původní verze */}
       <section className="relative w-full px-4 py-8 sm:px-6 lg:px-8">
-        <div className="relative mx-auto h-[80vh] min-h-[600px] max-w-7xl overflow-hidden rounded-[32px]">
+        <div className="relative mx-auto h-[55vh] min-h-[320px] max-w-7xl overflow-hidden rounded-[24px] sm:h-[70vh] sm:min-h-[500px] sm:rounded-[32px]">
           {/* Background image */}
           <div className="h-full w-full bg-cover bg-center">
             <img
@@ -48,7 +48,7 @@ export default function StandardyPage() {
             {NUMBERED_CIRCLES.map((circle) => (
               <div
                 key={circle.number}
-                className="absolute flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-neutral-900 shadow-lg transition-all hover:scale-110 hover:bg-white"
+                className="absolute flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-xs font-bold text-neutral-900 shadow-lg transition-all hover:scale-110 hover:bg-white sm:h-10 sm:w-10 sm:text-base lg:h-12 lg:w-12 lg:text-xl"
                 style={{
                   top: circle.top,
                   left: circle.left,

@@ -67,20 +67,22 @@ export function Header() {
         </nav>
 
         <button
-          className="inline-flex items-center justify-center rounded-full border border-white/40 p-2 text-white md:hidden"
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-full border p-2.5 md:hidden ${
+            isHome ? "border-white/40" : "border-neutral-300"
+          }`}
           aria-label="Otevřít menu"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="sr-only">Menu</span>
           <div className="flex flex-col gap-1.5">
-            <span className="h-[2px] w-5 bg-neutral-900" />
-            <span className="h-[2px] w-5 bg-neutral-900" />
+            <span className={`h-[2px] w-5 ${isHome ? "bg-white" : "bg-neutral-900"}`} />
+            <span className={`h-[2px] w-5 ${isHome ? "bg-white" : "bg-neutral-900"}`} />
           </div>
         </button>
       </div>
       {open && (
         <div className="bg-neutral-900/95 text-white md:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 text-sm font-medium sm:px-6">
+          <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4 text-base font-medium sm:px-6">
             {NAV_ITEMS.map((item) => {
               const active = pathname === item.href;
               return (
@@ -89,8 +91,8 @@ export function Header() {
                   href={item.href}
                   className={
                     active
-                      ? "rounded-md bg-white/10 px-3 py-2"
-                      : "rounded-md px-3 py-2 hover:bg-white/10"
+                      ? "rounded-md bg-white/10 px-4 py-3"
+                      : "rounded-md px-4 py-3 hover:bg-white/10"
                   }
                   onClick={() => setOpen(false)}
                 >
@@ -100,7 +102,7 @@ export function Header() {
             })}
             <Link
               href="/vyber-bytu"
-              className="mt-2 rounded-full bg-white px-4 py-2 text-center text-sm font-semibold text-neutral-900"
+              className="mt-2 rounded-full bg-white px-4 py-3 text-center text-base font-semibold text-neutral-900"
               onClick={() => setOpen(false)}
             >
               Volné byty

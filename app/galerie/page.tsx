@@ -215,7 +215,7 @@ export default function GaleriePage() {
                 </h1>
                 <p className="text-sm leading-relaxed text-neutral-600 sm:text-base">
                   Prohlédněte si fotografie exteriéru, interiéru a vybavení projektu
-                  ECOVILLA Uhříněves.
+                  Na Blatnici.
                 </p>
               </div>
             </div>

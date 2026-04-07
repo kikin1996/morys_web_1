@@ -53,7 +53,7 @@ export function Hero({
           />
         </div>
 
-        <div className="relative z-20 flex min-h-[70vh] flex-col px-6 pb-16 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
+        <div className="relative z-20 flex min-h-[55vh] flex-col px-5 pb-10 pt-12 sm:min-h-[70vh] sm:px-10 sm:pb-16 sm:pt-20 lg:px-14 lg:pt-24">
           <div
             className={`max-w-xl space-y-6 ${
               alignRight ? "ml-auto text-right lg:mr-24" : ""
@@ -64,14 +64,14 @@ export function Hero({
                 {eyebrow}
               </p>
             )}
-            <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-5xl">
               <span className="block">{title}</span>
               {highlightLine && (
                 <span className="block text-[#f4f0e6]">{highlightLine}</span>
               )}
             </h1>
             {subtitle && (
-              <p className="text-sm leading-relaxed text-neutral-100 sm:text-base">
+              <p className="text-base leading-relaxed text-neutral-100 sm:text-base">
                 {subtitle}
               </p>
             )}
@@ -107,7 +107,7 @@ export function Hero({
         </div>
 
         {/* Přepínač Den / Noc – styl podle dodaného HTML/CSS */}
-        <div className="pointer-events-auto absolute bottom-10 right-10 z-50">
+        <div className="pointer-events-auto absolute bottom-4 right-4 z-50 sm:bottom-10 sm:right-10">
           <button
             id="button-wrapper"
             data-time={mode}

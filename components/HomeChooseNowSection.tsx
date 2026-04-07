@@ -38,7 +38,7 @@ export function HomeChooseNowSection() {
               </p>
               <div className="pt-2 flex justify-end">
                 <Link
-                  href="/cenik"
+                  href="/vyber-bytu"
                   className="inline-flex items-center gap-3 rounded-full bg-[#f4f0e6] px-6 py-2.5 text-sm font-semibold text-neutral-900 hover:bg-[#ece3d3] mr-3"
                 >
                   Ceník

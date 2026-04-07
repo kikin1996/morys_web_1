@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Aktuality",
+  description:
+    "Sledujte průběh výstavby rezidenčního projektu Na Blatnici ve Frýdku-Místku. Aktuální informace o postupu stavby a plánovaných termínech.",
+  alternates: { canonical: "https://www.nablatnici.cz/aktuality" }
+};
+
 const MILESTONES = [
   {
     id: 2,
