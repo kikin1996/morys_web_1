@@ -35,7 +35,7 @@ export function Hero({
       : "/hlavni-stranka-fotky/vez__noc1.png";
 
   return (
-    <section className="bg-neutral-50 pb-6 pt-24 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">
+    <section className="bg-neutral-50 pb-0 pt-24 sm:pb-6 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">
       <div
         className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg"
         style={{
@@ -53,10 +53,10 @@ export function Hero({
           />
         </div>
 
-        <div className="relative z-20 flex min-h-[55vh] flex-col px-5 pb-10 pt-12 sm:min-h-[70vh] sm:px-10 sm:pb-16 sm:pt-20 lg:px-14 lg:pt-24">
+        <div className="relative z-20 flex min-h-[55vh] flex-col px-5 pb-10 pt-20 sm:min-h-[70vh] sm:px-10 sm:pb-16 sm:pt-20 lg:px-14 lg:pt-24">
           <div
-            className={`max-w-xl space-y-6 ${
-              alignRight ? "ml-auto text-right lg:mr-24" : ""
+            className={`max-w-xl space-y-4 ${
+              alignRight ? "md:ml-auto md:text-right md:mr-2 lg:mr-16" : ""
             }`}
           >
             {eyebrow && !alignRight && (
@@ -71,43 +71,43 @@ export function Hero({
               )}
             </h1>
             {subtitle && (
-              <p className="text-base leading-relaxed text-neutral-100 sm:text-base">
+              <p className="hidden text-base leading-relaxed text-neutral-100 sm:block sm:text-base">
                 {subtitle}
               </p>
             )}
-
-            {(primaryCta || secondaryCta) && (
-              <div
-                className={`flex flex-wrap items-center gap-3 pt-2 ${
-                  alignRight ? "justify-end" : ""
-                }`}
-              >
-                {primaryCta && (
-                  <Link
-                    href={primaryCta.href}
-                    className="inline-flex items-center gap-3 rounded-full bg-[#f4f0e6] px-7 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#ece3d3]"
-                  >
-                    <span>{primaryCta.label}</span>
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#12351c] text-xs text-white">
-                      ➜
-                    </span>
-                  </Link>
-                )}
-                {secondaryCta && (
-                  <Link
-                    href={secondaryCta.href}
-                    className="rounded-full border border-white/70 px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
-                  >
-                    {secondaryCta.label}
-                  </Link>
-                )}
-              </div>
-            )}
           </div>
+
+          {(primaryCta || secondaryCta) && (
+            <div
+              className={`mt-auto flex flex-wrap items-center gap-3 pt-4 ${
+                alignRight ? "md:justify-end" : ""
+              }`}
+            >
+              {primaryCta && (
+                <Link
+                  href={primaryCta.href}
+                  className="inline-flex items-center gap-3 rounded-full bg-[#f4f0e6] px-7 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#ece3d3]"
+                >
+                  <span>{primaryCta.label}</span>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#12351c] text-xs text-white">
+                    ➜
+                  </span>
+                </Link>
+              )}
+              {secondaryCta && (
+                <Link
+                  href={secondaryCta.href}
+                  className="rounded-full border border-white/70 px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+                >
+                  {secondaryCta.label}
+                </Link>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Přepínač Den / Noc – styl podle dodaného HTML/CSS */}
-        <div className="pointer-events-auto absolute bottom-4 right-4 z-50 sm:bottom-10 sm:right-10">
+        {/* Přepínač Den / Noc – desktop absolutně */}
+        <div className="hero-toggle-wrapper pointer-events-auto absolute bottom-10 left-10 z-50 hidden sm:block">
           <button
             id="button-wrapper"
             data-time={mode}
@@ -117,8 +117,21 @@ export function Hero({
             aria-label={mode === "day" ? "Přepnout na noc" : "Přepnout na den"}
           >
             <span id="button" className="hero-toggle-button" />
-            {/* Pokud budeš chtít hvězdy, můžeme sem později přidat canvas */}
-            {/* <canvas id="stars" className="hero-toggle-stars" /> */}
+          </button>
+        </div>
+      </div>
+
+      {/* Přepínač Den / Noc – mobil pod fotkou */}
+      <div className="flex justify-start px-4 pt-2 pb-0 sm:hidden">
+        <div className="hero-toggle-wrapper pointer-events-auto">
+          <button
+            data-time={mode}
+            type="button"
+            onClick={() => setMode(mode === "day" ? "night" : "day")}
+            className="hero-toggle"
+            aria-label={mode === "day" ? "Přepnout na noc" : "Přepnout na den"}
+          >
+            <span className="hero-toggle-button" />
           </button>
         </div>
       </div>

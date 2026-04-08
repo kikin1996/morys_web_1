@@ -53,7 +53,14 @@ export default function HousePickerLayout() {
     : null;
 
   const DEFAULT_APARTMENT: Record<string, string> = { "1": "A", "2": "D", "3": "I", "4": "L" };
-  const aptG = (code: string) => `group/apartment${selectedApartmentCode === code ? " selected-apt" : ""}`;
+  const APT_FILL: Record<string, string> = {
+    A: "rgba(90,115,100,0.4)", B: "rgba(130,180,150,0.4)", C: "rgba(90,115,100,0.4)",
+    D: "rgba(90,115,100,0.4)", E: "rgba(130,180,150,0.4)", F: "rgba(90,115,100,0.4)", G: "rgba(130,180,150,0.4)", H: "rgba(90,115,100,0.4)",
+    I: "rgba(90,115,100,0.4)", J: "rgba(130,180,150,0.4)", K: "rgba(90,115,100,0.4)",
+    L: "rgba(90,115,100,0.4)", M: "rgba(130,180,150,0.4)", N: "rgba(90,115,100,0.4)"
+  };
+  const aptFill = (code: string) => APT_FILL[code] ?? "#ACB8B0";
+  const aptG = (code: string) => `apt-group group/apartment${selectedApartmentCode === code ? " selected-apt" : ""}`;
 
   const handleSelectFloor = (id: string) => {
     setAnimDir("right");
@@ -73,10 +80,10 @@ export default function HousePickerLayout() {
         <div className="overflow-hidden rounded-[28px] border border-slate-200/70 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-10 lg:p-12">
 
           {/* Nadpis */}
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-6 flex items-start justify-between gap-3">
             <div>
-              <h1 className="mb-1 text-4xl font-semibold text-slate-900">Vyberte byt</h1>
-              <p className="text-slate-600">
+              <h1 className="mb-1 text-2xl font-semibold text-slate-900 sm:text-4xl">Vyberte byt</h1>
+              <p className="text-sm text-slate-600 sm:text-base">
                 {selectedFloor
                   ? `${FLOOR_LABELS[selectedFloor]} – klikněte na byt v půdorysu.`
                   : "Klikněte na patro nebo přejděte rovnou na tabulku níže."}
@@ -85,12 +92,13 @@ export default function HousePickerLayout() {
             {selectedFloor && (
               <button
                 onClick={handleBackToBuilding}
-                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                className="flex shrink-0 items-center gap-1.5 rounded-xl border border-[#12351c] bg-[#12351c] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#1a4a2d] sm:gap-2 sm:px-4 sm:text-sm"
               >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Zpět na budovu
+                <span className="hidden sm:inline">Zpět na budovu</span>
+                <span className="sm:hidden">Zpět</span>
               </button>
             )}
           </div>
@@ -113,54 +121,54 @@ export default function HousePickerLayout() {
 
                 {/* 1. NP */}
                 <g className="group/floor">
-                  <polygon
-                    points="275,478 652,337 652,277 275,410 78,323 78,368"
-                    fill="rgba(18,53,28,0.15)"
-                    stroke="#12351C"
-                    strokeWidth="1.5"
-                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]"
-                    onClick={() => handleSelectFloor("1")}
-                  />
-                  <text x="365" y="415" fill="#12351C" fontSize="16" fontWeight="700" textAnchor="middle" dominantBaseline="middle" className="pointer-events-none select-none">1. NP</text>
+                  <polygon points="275,478 652,337 652,277 275,410 78,323 78,368" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("1")} />
+                  <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
+                    <rect x="490" y="348" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="490,360 473,367 490,374" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="491" y="361" width="2" height="12" fill="white"/>
+                    <text x="568" y="362" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">1. NP</text>
+                    <text x="568" y="376" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                  </g>
                 </g>
 
                 {/* 2. NP */}
                 <g className="group/floor">
-                  <polygon
-                    points="275,410 652,277 652,225 275,332 78,268 78,323"
-                    fill="rgba(18,53,28,0.15)"
-                    stroke="#12351C"
-                    strokeWidth="1.5"
-                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]"
-                    onClick={() => handleSelectFloor("2")}
-                  />
-                  <text x="365" y="348" fill="#12351C" fontSize="16" fontWeight="700" textAnchor="middle" dominantBaseline="middle" className="pointer-events-none select-none">2. NP</text>
+                  <polygon points="275,410 652,277 652,225 275,332 78,268 78,323" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("2")} />
+                  <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
+                    <rect x="490" y="281" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="490,293 473,300 490,307" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="491" y="294" width="2" height="12" fill="white"/>
+                    <text x="568" y="295" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2. NP</text>
+                    <text x="568" y="309" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">5 volných bytů</text>
+                  </g>
                 </g>
 
                 {/* 3. NP */}
                 <g className="group/floor">
-                  <polygon
-                    points="275,332 652,225 652,154 275,237 78,187 78,268"
-                    fill="rgba(18,53,28,0.15)"
-                    stroke="#12351C"
-                    strokeWidth="1.5"
-                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]"
-                    onClick={() => handleSelectFloor("3")}
-                  />
-                  <text x="365" y="275" fill="#12351C" fontSize="16" fontWeight="700" textAnchor="middle" dominantBaseline="middle" className="pointer-events-none select-none">3. NP</text>
+                  <polygon points="275,332 652,225 652,154 275,237 78,187 78,268" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("3")} />
+                  <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
+                    <rect x="490" y="210" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="490,222 473,229 490,236" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="491" y="223" width="2" height="12" fill="white"/>
+                    <text x="568" y="224" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">3. NP</text>
+                    <text x="568" y="238" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                  </g>
                 </g>
 
                 {/* 4. NP */}
                 <g className="group/floor">
-                  <polygon
-                    points="275,237 610,166 611,130 637,127 637,114 474,98 133,129 133,145 156,147 158,173 78,186"
-                    fill="rgba(18,53,28,0.15)"
-                    stroke="#12351C"
-                    strokeWidth="1.5"
-                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]"
-                    onClick={() => handleSelectFloor("4")}
-                  />
-                  <text x="365" y="195" fill="#12351C" fontSize="16" fontWeight="700" textAnchor="middle" dominantBaseline="middle" className="pointer-events-none select-none">4. NP</text>
+                  <polygon points="275,237 610,166 611,130 637,127 637,114 474,98 133,129 133,145 156,147 158,173 78,186" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                    className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("4")} />
+                  <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
+                    <rect x="490" y="133" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="490,145 473,152 490,159" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="491" y="146" width="2" height="12" fill="white"/>
+                    <text x="568" y="147" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">4. NP</text>
+                    <text x="568" y="161" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                  </g>
                 </g>
               </svg>
             </div>
@@ -177,22 +185,22 @@ export default function HousePickerLayout() {
               {selectedFloor === "1" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
                   <g className={aptG("A")}>
-                    <polygon points="118,1092 410,1069 410,1090 565,1078 565,404 118,404" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="118,1092 410,1069 410,1090 565,1078 565,404 118,404" fill={aptFill("A")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("A")} />
                     <text x="342" y="788" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt A</text>
                   </g>
                   <g className={aptG("B")}>
-                    <polygon points="565,1078 683,1068 683,1089 955,1067 955,1090 1232,1067 1232,401 964,401 964,658 565,658" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="565,1078 683,1068 683,1089 955,1067 955,1090 1232,1067 1232,401 964,401 964,658 565,658" fill={aptFill("B")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("B")} />
                     <text x="899" y="788" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt B</text>
                   </g>
                   <g className={aptG("C")}>
-                    <polygon points="1232,1091 1502,1068 1502,1091 1790,1067 1790,401 1339,401 1339,658 1232,658" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="1232,1091 1502,1068 1502,1091 1790,1067 1790,401 1339,401 1339,658 1232,658" fill={aptFill("C")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("C")} />
                     <text x="1511" y="788" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt C</text>
@@ -204,36 +212,36 @@ export default function HousePickerLayout() {
               {selectedFloor === "2" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
                   <g className={aptG("D")}>
-                    <polygon points="117,1087 410,1066 410,959 425,959 425,403 117,403" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="117,1087 410,1066 410,959 425,959 425,403 117,403" fill={aptFill("D")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("D")} />
                     <text x="271" y="785" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt D</text>
                   </g>
                   <g className={aptG("E")}>
-                    <polygon points="410,1091 684,1068 684,1089 825,1076 825,667 664,664 664,401 425,401 425,959 410,959" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="410,1091 684,1068 684,1089 825,1076 825,667 664,664 664,401 425,401 425,959 410,959" fill={aptFill("E")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("E")} />
                     <text x="588" y="786" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt E</text>
                   </g>
                   <g className={aptG("F")}>
-                    <polygon points="825,1076 959,1065 959,1088 1234,1063 1234,954 1222,954 1222,401 964,401 964,667 825,667" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="825,1076 959,1065 959,1088 1234,1063 1234,954 1222,954 1222,401 964,401 964,667 825,667" fill={aptFill("F")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("F")} />
                     <text x="1030" y="789" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt F</text>
                   </g>
                   <g className={aptG("G")}>
-                    <polygon points="1234,1091 1511,1065 1511,954 1521,954 1524,635 1508,635 1508,401 1222,401 1222,954 1234,954" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="1234,1091 1511,1065 1511,954 1521,954 1524,635 1508,635 1508,401 1222,401 1222,954 1234,954" fill={aptFill("G")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("G")} />
                     <text x="1373" y="790" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt G</text>
                   </g>
                   <g className={aptG("H")}>
-                    <polygon points="1511,1089 1800,1065 1800,401 1508,401 1508,635 1524,635 1521,954 1511,954" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="1511,1089 1800,1065 1800,401 1508,401 1508,635 1524,635 1521,954 1511,954" fill={aptFill("H")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("H")} />
                     <text x="1654" y="790" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt H</text>
@@ -245,22 +253,22 @@ export default function HousePickerLayout() {
               {selectedFloor === "3" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
                   <g className={aptG("I")}>
-                    <polygon points="108,1089 401,1066 401,1089 558,1075 558,401 108,401" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="108,1089 401,1066 401,1089 558,1075 558,401 108,401" fill={aptFill("I")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("I")} />
                     <text x="333" y="785" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt I</text>
                   </g>
                   <g className={aptG("J")}>
-                    <polygon points="558,1075 677,1064 677,1086 952,1064 952,1086 1241,1061 1241,401 960,401 960,662 558,662" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="558,1075 677,1064 677,1086 952,1064 952,1086 1241,1061 1241,401 960,401 960,662 558,662" fill={aptFill("J")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("J")} />
                     <text x="900" y="784" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt J</text>
                   </g>
                   <g className={aptG("K")}>
-                    <polygon points="1231,1064 1231,1087 1505,1064 1505,1087 1798,1062 1798,401 1344,401 1344,658 1241,658 1241,1061" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="1231,1064 1231,1087 1505,1064 1505,1087 1798,1062 1798,401 1344,401 1344,658 1241,658 1241,1061" fill={aptFill("K")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("K")} />
                     <text x="1520" y="787" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt K</text>
@@ -272,22 +280,22 @@ export default function HousePickerLayout() {
               {selectedFloor === "4" && (
                 <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1920 1358" preserveAspectRatio="xMidYMid meet">
                   <g className={aptG("L")}>
-                    <polygon points="119,1087 410,1067 410,1088 686,1066 686,952 671,952 671,408 530,408 530,323 118,337 408,332 408,310 118,337" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="119,1087 410,1067 410,1088 686,1066 686,952 671,952 671,408 530,408 530,323 118,337 408,332 408,310 118,337" fill={aptFill("L")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("L")} />
                     <text x="400" y="740" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt L</text>
                   </g>
                   <g className={aptG("M")}>
-                    <polygon points="686,1087 959,1063 959,1085 1236,1062 1236,958 1250,958 1250,406 963,406 963,655 677,655 671,952 686,952" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="686,1087 959,1063 959,1085 1236,1062 1236,958 1250,958 1250,406 963,406 963,655 677,655 671,952 686,952" fill={aptFill("M")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("M")} />
                     <text x="968" y="787" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt M</text>
                   </g>
                   <g className={aptG("N")}>
-                    <polygon points="1236,1086 1510,1064 1510,1086 1798,1061 1798,311 1507,333 1507,310 1385,322 1385,410 1250,406 1250,958 1236,958" fill="transparent" stroke="#12351C" strokeWidth="2"
-                      className="cursor-pointer transition group-hover/apartment:fill-[rgba(18,53,28,0.35)]"
+                    <polygon points="1236,1086 1510,1064 1510,1086 1798,1061 1798,311 1507,333 1507,310 1385,322 1385,410 1250,406 1250,958 1236,958" fill={aptFill("N")} stroke="#12351C" strokeWidth="2"
+                      className="cursor-pointer transition"
                       onClick={() => setSelectedApartmentCode("N")} />
                     <text x="1517" y="739" fill="#12351C" fontSize="55" fontWeight="600" textAnchor="middle" dominantBaseline="middle"
                       className="pointer-events-none select-none opacity-0 transition group-hover/apartment:opacity-100">Byt N</text>
@@ -360,7 +368,7 @@ export default function HousePickerLayout() {
                         onClick={() => setFloorplanLightbox(true)}
                       >
                         <img
-                          src={`/3d-pudorysy/3d_pudorysy_byt${resolved3dCode}.jpg`}
+                          src={`/3d-pudorysy/3d_pudorysy_byt${resolved3dCode}.webp`}
                           alt={`3D půdorys bytu ${resolved3dCode}`}
                           className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                         />
@@ -406,7 +414,7 @@ export default function HousePickerLayout() {
               Zavřít
             </button>
             <img
-              src={`/3d-pudorysy/3d_pudorysy_byt${resolved3dCode}.jpg`}
+              src={`/3d-pudorysy/3d_pudorysy_byt${resolved3dCode}.webp`}
               alt={`3D půdorys bytu ${resolved3dCode}`}
               className="max-h-[85vh] w-full rounded-2xl object-contain"
             />

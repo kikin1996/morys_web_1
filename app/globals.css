@@ -17,20 +17,24 @@ body {
   to   { transform: translateX(0);     opacity: 1; }
 }
 
-/* Vybraný byt v půdorysu – trvale vyznačen */
-.selected-apt polygon {
-  fill: rgba(18, 53, 28, 0.35);
+/* Byty v půdorysu – hover + vybraný */
+.apt-group:hover polygon {
+  fill: rgba(18, 53, 28, 0.45);
 }
-.selected-apt text {
-  opacity: 1 !important;
+.selected-apt polygon {
+  fill: rgba(18, 53, 28, 0.7) !important;
+}
+.selected-apt text,
+.apt-group text {
+  display: none;
 }
 
 .animate-slide-right {
-  animation: slideInRight 0.5s ease-out both;
+  animation: slideInRight 2s ease-out both;
 }
 
 .animate-slide-left {
-  animation: slideInLeft 0.5s ease-out both;
+  animation: slideInLeft 2s ease-out both;
 }
 
 body {
@@ -97,6 +101,25 @@ body {
 
 .lh-zone-group:hover .lh-zone-label {
   fill: #f5f5f5;
+}
+
+/* Hero toggle – responzivní velikost */
+/* Mobile toggle – zmenšení přes font-size (vše je v em) */
+@media (max-width: 639px) {
+  .hero-toggle-wrapper .hero-toggle {
+    font-size: 0.45rem;
+  }
+}
+
+/* Desktop toggle – scale */
+.hero-toggle-wrapper {
+  transform-origin: bottom left;
+}
+@media (min-width: 640px) {
+  .hero-toggle-wrapper { transform: scale(0.45); }
+}
+@media (min-width: 1440px) {
+  .hero-toggle-wrapper { transform: scale(0.5); }
 }
 
 /* Věž v hero sekci – zobrazovat jen na šířkách >= 1450px */

@@ -19,7 +19,7 @@ export function HomeStats() {
   ];
 
   return (
-    <section className="border-b border-neutral-100 bg-neutral-50 py-10 sm:py-12">
+    <section className="border-b border-neutral-100 bg-neutral-50 pt-2 pb-10 sm:py-12">
       <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[32px] bg-white px-4 pb-8 pt-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-6 text-sm text-neutral-900 sm:grid-cols-4 sm:gap-4">
           <div className="flex flex-col items-center text-center">

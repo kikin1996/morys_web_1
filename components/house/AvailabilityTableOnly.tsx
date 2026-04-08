@@ -212,7 +212,7 @@ export default function AvailabilityTableOnly() {
     <div>
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Filtrační panel */}
-        <div className="overflow-hidden rounded-full bg-[#12351c] px-4 py-4 text-white shadow-md sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-2xl bg-[#12351c] px-4 py-4 text-white shadow-md sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             {/* Dispozice */}
             <div className="flex flex-col gap-2 md:flex-1">

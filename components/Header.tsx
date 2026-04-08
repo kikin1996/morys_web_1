@@ -24,7 +24,7 @@ export function Header() {
   return (
     <header className={`${headerBase} ${headerTop} ${headerBg}`}>
       <div
-        className={`mx-auto flex max-w-6xl items-center gap-10 px-4 py-4 sm:px-6 lg:px-8 ${
+        className={`mx-auto flex max-w-6xl items-center gap-10 px-6 py-4 sm:px-8 lg:px-12 xl:px-16 ${
           isHome ? "text-white" : "text-neutral-900"
         }`}
       >
@@ -67,7 +67,7 @@ export function Header() {
         </nav>
 
         <button
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-full border p-2.5 md:hidden ${
+          className={`ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border p-2.5 md:hidden ${
             isHome ? "border-white/40" : "border-neutral-300"
           }`}
           aria-label="Otevřít menu"
@@ -100,13 +100,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/vyber-bytu"
-              className="mt-2 rounded-full bg-white px-4 py-3 text-center text-base font-semibold text-neutral-900"
-              onClick={() => setOpen(false)}
-            >
-              Volné byty
-            </Link>
           </nav>
         </div>
       )}
