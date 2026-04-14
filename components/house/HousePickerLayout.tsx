@@ -92,9 +92,9 @@ export default function HousePickerLayout() {
             {selectedFloor && (
               <button
                 onClick={handleBackToBuilding}
-                className="flex shrink-0 items-center gap-1.5 rounded-xl border border-[#12351c] bg-[#12351c] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#1a4a2d] sm:gap-2 sm:px-4 sm:text-sm"
+                className="flex shrink-0 items-center gap-3 rounded-xl border border-[#12351c] bg-[#12351c] px-6 py-4 text-sm font-medium text-white transition hover:bg-[#1a4a2d] sm:gap-3 sm:px-8 sm:text-base"
               >
-                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
                 <span className="hidden sm:inline">Zpět na budovu</span>
@@ -400,7 +400,7 @@ export default function HousePickerLayout() {
           )}
 
           {/* Tabulka dostupnosti – vždy dole */}
-          <div className="mt-10">
+          <div className="mt-40">
             <AvailabilityTableOnly />
           </div>
 
