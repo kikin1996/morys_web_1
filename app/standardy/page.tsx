@@ -1,7 +1,19 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import StandardsSplitSection from "@/components/standards/StandardsSplitSection";
+
+export const metadata: Metadata = {
+  title: "Standardy",
+  description:
+    "Prohlédněte si stavební a technické standardy projektu Na Blatnici ve Frýdku-Místku – rekuperace, izolační trojskla, podlahové vytápění, Smart Home a další.",
+  alternates: { canonical: "https://www.nablatnici.cz/standardy" },
+  openGraph: {
+    title: "Standardy | Na Blatnici",
+    description: "Stavební a technické standardy projektu Na Blatnici – rekuperace, izolační trojskla, podlahové vytápění, Smart Home a další.",
+    url: "https://www.nablatnici.cz/standardy",
+    images: [{ url: "/fotky/fotografie-exterier/prechod.webp", width: 1200, height: 630, alt: "Projekt Na Blatnici – standardy" }],
+  },
+};
 
 const STANDARDS = [
   { number: 1, text: "Rekuperace" },
@@ -37,7 +49,7 @@ export default function StandardyPage() {
           {/* Background image */}
           <div className="h-full w-full bg-cover bg-center">
             <img
-              src="/images/vizualizace-interieru/b%20(7).jpg"
+              src="/images/vizualizace-interieru/b%20(6).webp"
               alt="Vizualizace interiéru bytu Na Blatnici"
               className="h-full w-full object-cover"
             />

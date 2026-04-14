@@ -4,7 +4,13 @@ export const metadata: Metadata = {
   title: "Aktuality",
   description:
     "Sledujte průběh výstavby rezidenčního projektu Na Blatnici ve Frýdku-Místku. Aktuální informace o postupu stavby a plánovaných termínech.",
-  alternates: { canonical: "https://www.nablatnici.cz/aktuality" }
+  alternates: { canonical: "https://www.nablatnici.cz/aktuality" },
+  openGraph: {
+    title: "Aktuality | Na Blatnici",
+    description: "Sledujte průběh výstavby rezidenčního projektu Na Blatnici ve Frýdku-Místku.",
+    url: "https://www.nablatnici.cz/aktuality",
+    images: [{ url: "/fotky/fotografie-exterier/prechod.webp", width: 1200, height: 630, alt: "Projekt Na Blatnici – aktuality" }],
+  },
 };
 
 const MILESTONES = [

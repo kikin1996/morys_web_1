@@ -3,17 +3,17 @@ export function HomePhotoStrip() {
     {
       label: "Ložnice",
       badge: "Interiér 1",
-      image: "/images/vizualizace-interieru/a%20(3).jpg"
+      image: "/images/vizualizace-interieru/a%20(3).webp"
     },
     {
       label: "Kuchyně a jídelna",
       badge: "Interiér 2",
-      image: "/images/vizualizace-interieru/c2%20(2).jpg"
+      image: "/images/vizualizace-interieru/c%20(2).webp"
     },
     {
       label: "Koupelna",
       badge: "Interiér 3",
-      image: "/images/vizualizace-interieru/d%20(3).jpg"
+      image: "/images/vizualizace-interieru/d%20(3).webp"
     }
   ];
 

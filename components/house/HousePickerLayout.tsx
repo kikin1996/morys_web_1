@@ -322,9 +322,9 @@ export default function HousePickerLayout() {
                   <h2 className="mb-4 text-2xl font-semibold text-slate-900">
                     {selectedApartmentInfo ? `Byt ${selectedApartmentInfo.code}` : "—"}
                   </h2>
-                  <div className="mb-6">
+                  <div className="mb-6 flex flex-col gap-3">
                     <a
-                      href={selectedApartmentInfo ? `/documents/karta-bytu-${selectedApartmentInfo.code}.pdf` : "/documents/karta-bytu.pdf"}
+                      href="/documents/karta-bytu.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#12351C] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(18,53,28,0.3)] transition-all duration-200 hover:bg-[#102c18] hover:shadow-[0_6px_16px_rgba(18,53,28,0.4)]"
@@ -333,6 +333,17 @@ export default function HousePickerLayout() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                       Karta bytu (PDF)
+                    </a>
+                    <a
+                      href="/documents/parkovani-sklad.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#12351C] px-6 py-3 text-sm font-semibold text-[#12351C] transition-all duration-200 hover:bg-[#12351C] hover:text-white"
+                    >
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Parkování a sklad (PDF)
                     </a>
                   </div>
                   <div className="grid grid-cols-2 gap-4">

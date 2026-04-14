@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nastavení souborů cookie",
+  description: "Nastavení preferencí cookies na webu Na Blatnici.",
+  alternates: { canonical: "https://www.nablatnici.cz/nastaveni-souboru-cookie" },
+  robots: { index: false, follow: false },
+};
+
 export default function CookieSettingsPage() {
   return (
     <div className="mt-16 bg-white py-12 sm:mt-20 sm:py-16">

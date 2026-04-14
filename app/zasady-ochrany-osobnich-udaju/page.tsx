@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Zásady ochrany osobních údajů",
+  description: "Informace o zpracování osobních údajů v projektu Na Blatnici ve Frýdku-Místku.",
+  alternates: { canonical: "https://www.nablatnici.cz/zasady-ochrany-osobnich-udaju" },
+  robots: { index: false, follow: false },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="mt-16 bg-white py-12 sm:mt-20 sm:py-16">

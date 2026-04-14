@@ -8,7 +8,7 @@ export function HomeChooseNowSection() {
           className="grid min-h-[380px] md:min-h-[440px] lg:min-h-[500px] overflow-hidden rounded-[32px] bg-neutral-900 text-white shadow-lg md:grid-cols-2"
           style={{
             backgroundImage:
-              "linear-gradient(to left, rgba(0,0,0,0.55), rgba(0,0,0,0.15)), url('/images/vizualizace-interieru/c2%20(4).jpg')",
+              "linear-gradient(to left, rgba(0,0,0,0.55), rgba(0,0,0,0.15)), url('/images/vizualizace-interieru/c%20(4).webp')",
             backgroundSize: "cover",
             backgroundPosition: "center bottom"
           }}

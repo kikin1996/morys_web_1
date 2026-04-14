@@ -42,6 +42,12 @@ export const metadata: Metadata = {
       }
     ]
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Na Blatnici – Nové byty ve Frýdku-Místku",
+    description: "Rezidenční projekt Na Blatnici ve Frýdku-Místku. Moderní byty 2+kk až 4+kk s terasami, podlahovým vytápěním, rekuperací a Smart Home.",
+    images: ["/fotky/fotografie-exterier/prechod.webp"],
+  },
   icons: {
     icon: "/images/hosue.png",
     apple: "/images/hosue.png"

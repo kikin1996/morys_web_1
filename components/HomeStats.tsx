@@ -20,7 +20,7 @@ export function HomeStats() {
               <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-600 sm:text-xs sm:tracking-[0.18em]">
                 {item.label}
               </p>
-              <p className="mt-2 text-3xl font-semibold leading-none tracking-tight text-[#12351c] sm:text-4xl lg:text-5xl">
+              <p className="mt-2 text-xl font-semibold leading-none tracking-tight text-[#12351c] sm:text-4xl lg:text-5xl">
                 {item.value}
               </p>
             </div>
@@ -33,7 +33,7 @@ export function HomeStats() {
               <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-600 sm:text-xs sm:tracking-[0.18em]">
                 {item.label}
               </p>
-              <p className="mt-2 text-3xl font-semibold leading-none tracking-tight text-[#12351c] sm:text-4xl lg:text-5xl">
+              <p className="mt-2 text-xl font-semibold leading-none tracking-tight text-[#12351c] sm:text-4xl lg:text-5xl">
                 {item.value}
               </p>
             </div>
