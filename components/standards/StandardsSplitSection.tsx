@@ -1,3 +1,5 @@
+"use client";
+
 type StandardsSplitSectionProps = {
   pillLabel?: string;
   title: string;
