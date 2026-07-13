@@ -9,11 +9,11 @@ const FILTERS = [
 ];
 
 const IMAGES = [
-  { id: 1, label: "Exteriér – pohled z parku", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(1).webp" },
-  { id: 2, label: "Exteriér – hlavní fasáda", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(2).webp" },
-  { id: 3, label: "Exteriér – pohled na dům", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(3).webp" },
-  { id: 4, label: "Exteriér – detail fasády", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(4).webp" },
-  { id: 5, label: "Exteriér – pohled z ulice", category: "exterior", src: "/fotky/fotografie-exterier/prechod.webp" },
+  { id: 1, label: "Exteriér – pohled z ulice se zvonicí", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(8).webp" },
+  { id: 2, label: "Exteriér – zahrada a mokřad", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(9).webp" },
+  { id: 3, label: "Exteriér – boční pohled s kostelem", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(10).webp" },
+  { id: 4, label: "Exteriér – vnitřní dvůr s kašnou", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(11).webp" },
+  { id: 5, label: "Exteriér – pohled z ulice", category: "exterior", src: "/fotky/fotografie-exterier/ulice.webp" },
   { id: 25, label: "Exteriér – podvečerní pohled na dům", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(6).webp" },
   { id: 26, label: "Exteriér – pohled na město", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(7).webp" },
   { id: 6, label: "Interiér – ložnice A1", category: "interior", src: "/images/vizualizace-interieru/a%20(1).webp" },
@@ -53,7 +53,7 @@ export default function GalerieClient() {
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-200">
                 <img
-                  src="/fotky/fotografie-exterier/prechod.webp"
+                  src="/fotky/fotografie-exterier/ulice.webp"
                   alt="Vizualizace exteriéru projektu Na Blatnici ve Frýdku-Místku"
                   className="h-full w-full object-cover"
                 />
