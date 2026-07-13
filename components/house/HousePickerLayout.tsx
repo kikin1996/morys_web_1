@@ -134,7 +134,7 @@ export default function HousePickerLayout() {
 
                 {/* 2. NP */}
                 <g className="group/floor">
-                  <polygon points="181,670 624,848 783,763 803,766 927,685 947,688 1048,622 1066,626 1156,567 1172,571 1247,522 1261,522 1350,491 1337,382 1271,422 1254,421 1182,465 1162,462 1078,516 1077,512 1055,508 951,567 937,563 805,634 783,629 625,708 175,555" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="181,670 624,848 783,763 803,766 927,685 947,688 1048,622 1066,626 1156,567 1172,571 1247,522 1261,522 1330,491 1337,382 1271,422 1254,421 1182,465 1162,462 1077,512 1055,508 951,567 937,563 805,634 783,629 625,708 175,555" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("2")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
                     <rect x="1050" y="545" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
@@ -176,7 +176,7 @@ export default function HousePickerLayout() {
             /* ── Půdorys patra ── */
             <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
               <img
-                src={`/images/2d-pudorysy/p${selectedFloor}.jpg`}
+                src={`/images/2d-pudorysy/p${selectedFloor}.webp`}
                 alt={`Půdorys ${FLOOR_LABELS[selectedFloor]}`}
                 className="w-full object-contain"
               />

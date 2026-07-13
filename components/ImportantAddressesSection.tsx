@@ -19,7 +19,7 @@ export function ImportantAddressesSection() {
           {/* Adresa projektu */}
           <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src="/images/foto-blatnice2.webp" alt="Projekt Na Blatnici – Frýdek-Místek" className="h-full w-full object-cover" />
+              <img src="/images/foto-blatnice2-opt.webp" alt="Projekt Na Blatnici – Frýdek-Místek" className="h-full w-full object-cover" />
             </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold text-neutral-900">
@@ -35,7 +35,7 @@ export function ImportantAddressesSection() {
           {/* KURKO reality – kancelář */}
           <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src="/images/kurko.webp" alt="KURKO reality s.r.o." className="h-full w-full object-cover" />
+              <img src="/images/kurko-opt.webp" alt="KURKO reality s.r.o." className="h-full w-full object-cover" />
             </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold text-neutral-900">

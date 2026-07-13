@@ -26,13 +26,13 @@ export function Hero({
 
   const backgroundBase =
     mode === "day"
-      ? "/hlavni-stranka-fotky/den1.jpg"
-      : "/hlavni-stranka-fotky/noc1.jpg";
+      ? "/hlavni-stranka-fotky/den1.webp"
+      : "/hlavni-stranka-fotky/noc1.webp";
 
   const spireOverlay =
     mode === "day"
-      ? "/hlavni-stranka-fotky/vez__den1.png"
-      : "/hlavni-stranka-fotky/vez__noc1.png";
+      ? "/hlavni-stranka-fotky/vez__den1.webp"
+      : "/hlavni-stranka-fotky/vez__noc1.webp";
 
   return (
     <section className="bg-neutral-50 pb-0 pt-24 sm:pb-6 sm:pt-28 -mt-20 sm:-mt-24 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-4">

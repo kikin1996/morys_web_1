@@ -14,6 +14,8 @@ const IMAGES = [
   { id: 3, label: "Exteriér – pohled na dům", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(3).webp" },
   { id: 4, label: "Exteriér – detail fasády", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(4).webp" },
   { id: 5, label: "Exteriér – pohled z ulice", category: "exterior", src: "/fotky/fotografie-exterier/prechod.webp" },
+  { id: 25, label: "Exteriér – podvečerní pohled na dům", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(6).webp" },
+  { id: 26, label: "Exteriér – pohled na město", category: "exterior", src: "/fotky/fotografie-exterier/ex%20(7).webp" },
   { id: 6, label: "Interiér – ložnice A1", category: "interior", src: "/images/vizualizace-interieru/a%20(1).webp" },
   { id: 7, label: "Interiér – ložnice A2", category: "interior", src: "/images/vizualizace-interieru/a%20(2).webp" },
   { id: 8, label: "Interiér – ložnice A3", category: "interior", src: "/images/vizualizace-interieru/a%20(3).webp" },
