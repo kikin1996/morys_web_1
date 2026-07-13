@@ -37,7 +37,13 @@ export function HomeImportantSection() {
               </span>
             </Link>
           </div>
-          <div className="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-primary/10 via-neutral-100 to-primary/30" />
+          <div className="aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100">
+            <img
+              src="/fotky/fotografie-exterier/ex%20(7).webp"
+              alt="Exteriér – pohled na město"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
