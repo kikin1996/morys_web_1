@@ -41,6 +41,7 @@ export default function HousePickerLayout() {
   const [selectedApartmentCode, setSelectedApartmentCode] = useState<string | null>(null);
   const [floorplanLightbox, setFloorplanLightbox] = useState(false);
   const [animDir, setAnimDir] = useState<"right" | "left">("right");
+  const [isLoadingFloor, setIsLoadingFloor] = useState(false);
 
   const resolved3dCode =
     selectedApartmentCode === "A" ? "I"
@@ -63,9 +64,18 @@ export default function HousePickerLayout() {
   const aptG = (code: string) => `apt-group group/apartment${selectedApartmentCode === code ? " selected-apt" : ""}`;
 
   const handleSelectFloor = (id: string) => {
-    setAnimDir("right");
-    setSelectedFloor(id);
-    setSelectedApartmentCode(DEFAULT_APARTMENT[id] ?? null);
+    if (isLoadingFloor) return;
+    setIsLoadingFloor(true);
+    const preload = new Image();
+    const finishSelect = () => {
+      setAnimDir("right");
+      setSelectedFloor(id);
+      setSelectedApartmentCode(DEFAULT_APARTMENT[id] ?? null);
+      setIsLoadingFloor(false);
+    };
+    preload.onload = finishSelect;
+    preload.onerror = finishSelect;
+    preload.src = `/images/2d-pudorysy/p${id}.webp`;
   };
 
   const handleBackToBuilding = () => {
@@ -121,27 +131,27 @@ export default function HousePickerLayout() {
 
                 {/* 1. NP */}
                 <g className="group/floor">
-                  <polygon points="626,1003 780,892 798,899 923,806 940,811 1044,735 1065,737 1150,671 1165,676 1241,620 1257,620 1325,574 1330,491 1261,522 1247,522 1172,571 1156,567 1066,626 1048,622 947,688 927,685 803,766 783,763 624,848 181,670 187,786" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="626,1003 780,892 798,899 923,806 940,811 1044,735 1065,737 1150,671 1165,676 1241,620 1257,620 1325,574 1331,473 1261,522 1247,522 1172,571 1156,567 1066,626 1048,622 947,688 927,685 803,766 783,763 624,848 181,670 187,786" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("1")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="1050" y="660" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="1050,672 1033,679 1050,686" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="1051" y="673" width="2" height="12" fill="white"/>
-                    <text x="1128" y="674" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">1. NP</text>
-                    <text x="1128" y="692" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="653" width="155" height="52" rx="10" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,670 1033,679 1050,688" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="671" width="2" height="16" fill="white"/>
+                    <text x="1128" y="670" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">1. NP</text>
+                    <text x="1128" y="691" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
 
                 {/* 2. NP */}
                 <g className="group/floor">
-                  <polygon points="181,670 624,848 783,763 803,766 927,685 947,688 1048,622 1066,626 1156,567 1172,571 1247,522 1261,522 1330,491 1337,382 1271,422 1254,421 1182,465 1162,462 1077,512 1055,508 951,567 937,563 805,634 783,629 625,708 175,555" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="181,670 624,848 783,763 803,766 927,685 947,688 1048,622 1066,626 1156,567 1172,571 1247,522 1261,522 1331,473 1337,382 1271,422 1254,421 1182,465 1162,462 1077,512 1055,508 951,567 937,563 805,634 783,629 625,708 175,555" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("2")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="1050" y="545" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="1050,557 1033,564 1050,571" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="1051" y="558" width="2" height="12" fill="white"/>
-                    <text x="1128" y="559" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2. NP</text>
-                    <text x="1128" y="577" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">5 volných bytů</text>
+                    <rect x="1050" y="538" width="155" height="52" rx="10" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,555 1033,564 1050,573" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="556" width="2" height="16" fill="white"/>
+                    <text x="1128" y="555" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2. NP</text>
+                    <text x="1128" y="576" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">5 volných bytů</text>
                   </g>
                 </g>
 
@@ -150,11 +160,11 @@ export default function HousePickerLayout() {
                   <polygon points="175,555 625,708 783,629 805,634 937,563 951,567 1055,508 1077,512 1162,462 1182,465 1254,421 1271,422 1337,382 1344,289 1277,320 1267,319 1188,355 1169,353 1081,398 1061,396 955,444 935,441 806,498 786,494 628,554 168,443" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("3")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="1050" y="435" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="1050,447 1033,454 1050,461" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="1051" y="448" width="2" height="12" fill="white"/>
-                    <text x="1128" y="449" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">3. NP</text>
-                    <text x="1128" y="467" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="428" width="155" height="52" rx="10" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,445 1033,454 1050,463" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="446" width="2" height="16" fill="white"/>
+                    <text x="1128" y="445" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">3. NP</text>
+                    <text x="1128" y="466" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
 
@@ -163,14 +173,20 @@ export default function HousePickerLayout() {
                   <polygon points="168,443 628,554 786,494 806,498 935,441 955,444 1061,396 1081,398 1169,353 1188,355 1267,319 1277,320 1344,289 1346,253 1267,244 1267,219 1315,203 1316,184 962,167 293,300 295,328 301,330 301,370 165,404" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("4")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="1050" y="300" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="1050,312 1033,319 1050,326" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="1051" y="313" width="2" height="12" fill="white"/>
-                    <text x="1128" y="314" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">4. NP</text>
-                    <text x="1128" y="332" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="293" width="155" height="52" rx="10" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,310 1033,319 1050,328" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="311" width="2" height="16" fill="white"/>
+                    <text x="1128" y="310" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">4. NP</text>
+                    <text x="1128" y="331" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
               </svg>
+
+              {isLoadingFloor && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/60">
+                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#12351c] border-t-transparent" />
+                </div>
+              )}
             </div>
           ) : (
             /* ── Půdorys patra ── */
