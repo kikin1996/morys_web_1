@@ -109,65 +109,65 @@ export default function HousePickerLayout() {
             /* ── Foto budovy ── */
             <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50">
               <svg
-                viewBox="0 0 742 556"
+                viewBox="0 0 1600 1195"
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full"
               >
                 <image
-                  href="/fotky/fotografie-exterier/drone2.webp"
-                  x="0" y="0" width="742" height="556"
+                  href="/fotky/fotografie-exterier/f1.webp"
+                  x="0" y="0" width="1600" height="1195"
                   preserveAspectRatio="xMidYMid meet"
                 />
 
                 {/* 1. NP */}
                 <g className="group/floor">
-                  <polygon points="275,478 652,337 652,277 275,410 78,323 78,368" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="620,1015 1189,839 1189,521 620,839 255,649 255,735" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("1")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="490" y="348" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="490,360 473,367 490,374" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="491" y="361" width="2" height="12" fill="white"/>
-                    <text x="568" y="362" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">1. NP</text>
-                    <text x="568" y="376" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="740" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,752 1033,759 1050,766" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="753" width="2" height="12" fill="white"/>
+                    <text x="1128" y="754" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">1. NP</text>
+                    <text x="1128" y="772" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
 
                 {/* 2. NP */}
                 <g className="group/floor">
-                  <polygon points="275,410 652,277 652,225 275,332 78,268 78,323" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="620,839 1189,521 1232,383 620,637 255,544 255,649" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("2")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="490" y="281" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="490,293 473,300 490,307" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="491" y="294" width="2" height="12" fill="white"/>
-                    <text x="568" y="295" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2. NP</text>
-                    <text x="568" y="309" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">5 volných bytů</text>
+                    <rect x="1050" y="600" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,612 1033,619 1050,626" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="613" width="2" height="12" fill="white"/>
+                    <text x="1128" y="614" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2. NP</text>
+                    <text x="1128" y="632" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">5 volných bytů</text>
                   </g>
                 </g>
 
                 {/* 3. NP */}
                 <g className="group/floor">
-                  <polygon points="275,332 652,225 652,154 275,237 78,187 78,268" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="620,637 1232,383 1290,195 620,391 255,389 255,544" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("3")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="490" y="210" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="490,222 473,229 490,236" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="491" y="223" width="2" height="12" fill="white"/>
-                    <text x="568" y="224" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">3. NP</text>
-                    <text x="568" y="238" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="440" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,452 1033,459 1050,466" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="453" width="2" height="12" fill="white"/>
+                    <text x="1128" y="454" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">3. NP</text>
+                    <text x="1128" y="472" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
 
                 {/* 4. NP */}
                 <g className="group/floor">
-                  <polygon points="275,237 610,166 611,130 637,127 637,114 474,98 133,129 133,145 156,147 158,173 78,186" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
+                  <polygon points="620,391 1290,195 1290,150 620,255 290,300 255,389" fill="rgba(18,53,28,0.15)" stroke="#12351C" strokeWidth="1.5"
                     className="cursor-pointer transition group-hover/floor:fill-[rgba(18,53,28,0.4)]" onClick={() => handleSelectFloor("4")} />
                   <g className="pointer-events-none opacity-0 transition-opacity duration-200 group-hover/floor:opacity-100">
-                    <rect x="490" y="133" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
-                    <polygon points="490,145 473,152 490,159" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <rect x="491" y="146" width="2" height="12" fill="white"/>
-                    <text x="568" y="147" fill="#12351C" fontSize="11" fontWeight="700" textAnchor="middle" dominantBaseline="middle">4. NP</text>
-                    <text x="568" y="161" fill="#555" fontSize="10" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
+                    <rect x="1050" y="280" width="155" height="38" rx="8" fill="white" stroke="#12351C" strokeWidth="1.5"/>
+                    <polygon points="1050,292 1033,299 1050,306" fill="white" stroke="#12351C" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <rect x="1051" y="293" width="2" height="12" fill="white"/>
+                    <text x="1128" y="294" fill="#12351C" fontSize="22" fontWeight="700" textAnchor="middle" dominantBaseline="middle">4. NP</text>
+                    <text x="1128" y="312" fill="#555" fontSize="19" textAnchor="middle" dominantBaseline="middle">3 volné byty</text>
                   </g>
                 </g>
               </svg>
